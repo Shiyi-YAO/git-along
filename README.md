@@ -38,9 +38,3 @@ r3 : YAO Shiyi
       ```
         ls Corpus/*.txt | python extraire_lexique.py
       ```
-
-
-r3
-mots_doc = set(re.findall(r'\w+', doc.lower()))
-mots_doc = [m for m in mots_doc if m.isalpha()]
-```
