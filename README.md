@@ -16,7 +16,7 @@ r3 : YAO Shiyi
 
 
 - #### Rôle 3
-   - tâche 1 : compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
+   - Tâche 1 : compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
 
       - Difficulté
 
@@ -34,7 +34,7 @@ r3 : YAO Shiyi
         mots_doc = [m for m in mots_doc if m.isalpha()] # .isalpha() --> seulement les alphabet peut etre mis dans la liste des mots
         ```
   
-   - tâche 2 : entrée standard pas ls (`ls Corpus/*.txt | python extraire_lexique.py`)
+   - Tâche 2 : entrée standard pas ls (`ls Corpus/*.txt | python extraire_lexique.py`)
 
       - Difficulté
     
