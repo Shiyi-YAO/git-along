@@ -12,11 +12,16 @@ r3 : YAO Shiyi
 ### Explication du tâche & Les difficulté et solustions
 
 - #### Rôle 1
-   - ####### tache 1
-   - ####### tache 2
+
 
 - #### Rôle 2
 
 
 - #### Rôle 3
-
+   - tâche 1 : Écrire une fonction prenant comme argument une liste de chaînes et retournant un dictionnaire associant chaque mot au nombre de documents dans lequel il apparaît.
+<br>
+<br>
+   - tâche 2 : permettre de lister les chemins vers les fichiers du corpus sur l’entrée standard du programme en python :
+      ```
+        ls Corpus/*.txt | python extraire_lexique.py
+      ```
