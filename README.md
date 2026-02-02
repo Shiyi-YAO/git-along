@@ -38,9 +38,7 @@ C'est un ... qui ...
 Vous pouvez également tester sur votre propre corpus juste en changeant l'argument "Corpus/*.txt" avec "Nom_de_votre_dossiers/*.txt"  
 
 
-
-
-  
+   
 ## Explication du tâche & Les difficulté et leur solustions
 
 ### Rôle 1
@@ -53,7 +51,6 @@ permettre la lecture d’un corpus comme une liste de fichiers en arguments, en 
   python extraire_lexique.py Corpus/*.txt
 ```
 
-  
 ### Rôle 2
 - #### tâche 1
 Écrire une fonction prenant comme argument un corpus représenté par une liste de chaînes, et retournant un dictionnaire associant chaque mot à son nombre d’occurrences dans le corpus.
