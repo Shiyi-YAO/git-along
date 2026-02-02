@@ -17,7 +17,7 @@ r3 : YAO Shiyi
 
 - #### Rôle 3
    - tâche 1 : Écrire une fonction prenant comme argument une liste de chaînes et retournant un dictionnaire associant chaque mot au nombre de documents dans lequel il apparaît.
-<br>
+      <br>
       - la seule difficulté de cette partie est d'éviter de compter plusieurs fois un même mot dans un document
    - tâche 2 : permettre de lister les chemins vers les fichiers du corpus sur l’entrée standard du programme en python :
       ```
