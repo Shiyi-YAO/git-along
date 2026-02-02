@@ -34,7 +34,12 @@ r3 : YAO Shiyi
         mots_doc = [m for m in mots_doc if m.isalpha()] # .isalpha() --> seulement les alphabet peut etre mis dans la liste des mots
         ```
   
-   - tâche 2 : permettre de lister les chemins vers les fichiers du corpus sur l’entrée standard du programme en python :
-      ```
-        ls Corpus/*.txt | python extraire_lexique.py
-      ```
+   - tâche 2 : entrée standard pas ls (`ls Corpus/*.txt | python extraire_lexique.py`)
+
+      - Difficulté
+    
+        coming soon
+        
+      - Solution
+    
+        coming soon
