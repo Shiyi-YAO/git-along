@@ -34,12 +34,28 @@ r3 : YAO Shiyi
         mots_doc = [m for m in mots_doc if m.isalpha()] # .isalpha() --> seulement les alphabet peut etre mis dans la liste des mots
         ```
   
-   - Tâche 2 : entrée standard pas ls (`ls Corpus/*.txt | python extraire_lexique.py`)
+   - Tâche 2 : Effectuer le script par l'entrée standard - ls (`ls Corpus/*.txt | python extraire_lexique.py`)
 
       - Difficulté
     
-        coming soon
+        Ce que je trouve le plus difficile ici, c’est qu’avec une seule ligne de commande, je n’arrive pas à comprendre ou imaginer clairement ce que je dois faire concrètement (autrement dit, le passage de la description textuelle de la tâche à sa mise en œuvre pratique)
         
       - Solution
     
-        coming soon
+        au lieu de 看这段命令整体, 我先看左边的部分(`ls Corpus/*.txt`), 因为他的输出将会是我的script的输入, 我在终端lancer这个命令, 我得到了 :
+           ```
+           
+           ```
+
+
+
+
+
+
+
+
+
+
+
+
+
