@@ -24,11 +24,11 @@ r3 : YAO Shiyi
         r2 : mots = re.findall(r'\w+', texte.lower())  ---> r3 : mots_doc = set(re.findall(r'\w+', doc.lower()))
         set pour le transmettre en l'ensemble qui permet de pas prendre les doublons
         ```
-      mais quand je le teste je noté que il y a des mots "chiffrés" (comme 000, 18273, wyeu373684), donc j'ai ajouté une ligne de code pour ignorer les no_alphabet
-     ```
-     mots_doc = set(re.findall(r'\w+', doc.lower())) 
-     mots_doc = [m for m in mots_doc if m.isalpha()] # .isalpha() --> seulement les alphabet peut etre mis dans la liste des mots
-     ```
+        mais quand je le teste je noté que il y a des mots "chiffrés" (comme 000, 18273, wyeu373684), donc j'ai ajouté une ligne de code pour ignorer les no_alphabet
+        ```
+        mots_doc = set(re.findall(r'\w+', doc.lower())) 
+        mots_doc = [m for m in mots_doc if m.isalpha()] # .isalpha() --> seulement les alphabet peut etre mis dans la liste des mots
+        ```
   
    - tâche 2 : permettre de lister les chemins vers les fichiers du corpus sur l’entrée standard du programme en python :
       ```
