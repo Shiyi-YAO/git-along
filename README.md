@@ -9,9 +9,7 @@ r2 : ...
 r3 : YAO Shiyi
 ```
 <br>
-<br>
-<br>
-<br>
+
 ### Explication du tâche & Les difficulté et solustions
 
 - #### Rôle 1
