@@ -16,7 +16,7 @@ r3 : YAO Shiyi
 
 
 - #### Rôle 3
-   - tâche 1 : Écrire une fonction prenant comme argument une liste de chaînes et retournant un dictionnaire associant chaque mot au nombre de documents dans lequel il apparaît.
+   - tâche 1 : compter le nomdre de documents par mot --> def compter_nb_doc(corpus):
 
       - la seule difficulté de cette partie est d'éviter de compter plusieurs fois un même mot dans un document
   
