@@ -18,9 +18,11 @@ r3 : YAO Shiyi
 - #### Rôle 3
    - tâche 1 : compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
 
-      - Difficulté : la principale difficulté de cette partie est d’éviter de compter plusieurs fois un même mot dans un document et de conserver la même liste de mots que pour le rôle 2. Sinon, la longueur des listes est différente et il devient impossible d’afficher correctement les résultats.
+      - Difficulté
+        la principale difficulté de cette partie est d’éviter de compter plusieurs fois un même mot dans un document et de conserver la même liste de mots que pour le rôle 2. Sinon, la longueur des listes est différente et il devient impossible d’afficher correctement les résultats.
         
-      - Solution : pour garantir la cohérence avec le rôle 2, la même méthode d’extraction des mots a été utilisée (`re.findall`) au lieu de ma propre façon (`split`). Les mots sont ensuite stockés dans un ensemble (`set`) afin d’éviter les doublons dans un même document.
+      - Solution
+        pour garantir la cohérence avec le rôle 2, la même méthode d’extraction des mots a été utilisée (`re.findall`) au lieu de ma propre façon (`split`). Les mots sont ensuite stockés dans un ensemble (`set`) afin d’éviter les doublons dans un même document.
         ```
         r2 : mots = re.findall(r'\w+', texte.lower())  ---> r3 : mots_doc = set(re.findall(r'\w+', doc.lower()))
         ```
@@ -35,21 +37,6 @@ r3 : YAO Shiyi
         ls Corpus/*.txt | python extraire_lexique.py
       ```
 
-
-• Rôle 3
-
-◦ tâche 1 : compter le nombre de documents par mot (fonction `compter_nb_doc(corpus)`)
-
-▪ Difficulté : la principale difficulté de cette partie est d’éviter de compter plusieurs fois un même mot dans un document et de conserver la même liste de mots que pour le rôle 2. Sinon, la longueur des listes diffère et il devient impossible d’afficher correctement les résultats.
-
-▪ Solution : pour garantir la cohérence avec le rôle 2, la même méthode d’extraction des mots a été utilisée (`re.findall`). Les mots sont ensuite stockés dans un ensemble (`set`) afin d’éviter les doublons dans un même document.
-
-Lors des tests, certains mots contenant uniquement des chiffres ou des caractères alphanumériques ont été observés (par exemple : 000, 18273, wyeu373684). Une condition supplémentaire a donc été ajoutée afin de ne conserver que les mots alphabétiques.
-
-Extrait de code :
-```
-r2
-mots = re.findall(r'\w+', texte.lower())
 
 r3
 mots_doc = set(re.findall(r'\w+', doc.lower()))
