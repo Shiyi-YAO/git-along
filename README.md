@@ -60,11 +60,11 @@ r3 : YAO Shiyi
          for line in sys.stdin:
             liste_chemins.append(line)
          ```
-        Cependant, chaque ligne se termine par (\n). Il est donc nécessaire de le supprimer avant l’ajout à la liste, en utilisant la méthode (`.strip()`) :
+        Cependant, chaque ligne se termine par (\n). Il est donc nécessaire de le supprimer avant l’ajout à la liste, en utilisant la méthode `.strip()` :
          ```
          liste_chemins.append(line.strip())
          ```
-        Une fois cette liste de chemins construite, il est alors possible de réutiliser la fonction (`lire_corpus(fichiers)`), ce qui permet d’obtenir un corpus, identique à celui obtenu dans l’exercice 2, et pouvant être passé en paramètre aux fonctions compter_occurrences(liste_textes) et compter_nb_doc(corpus)
+        Une fois cette liste de chemins construite, il est alors possible de réutiliser la fonction `lire_corpus(fichiers)`, ce qui permet d’obtenir un corpus, identique à celui obtenu dans l’exercice 2, et pouvant être passé en paramètre aux fonctions compter_occurrences(liste_textes) et compter_nb_doc(corpus)
         ```
         corpus = lire_corpus(liste_chemins)
         return corpus
@@ -73,8 +73,8 @@ r3 : YAO Shiyi
 
 - #### Merges vers main
 
-   - Tâche 1
- 
+   - Tâche 1 (`git merge s2ex2SY` : r3)
+
      ```
      # --- affichage des résultats --- #
      def afficher_res(corpus):
@@ -96,13 +96,17 @@ r3 : YAO Shiyi
                  fichiers.append(f"Corpus/{i}.txt")
            return fichiers
       
-      fichiers = entrée_exo2()
-      corpus = lire_corpus(fichiers)
-      afficher_res(corpus)
+     fichiers = entrée_exo2()
+     corpus = lire_corpus(fichiers)
+     afficher_res(corpus)
      ```
+     Comme l’exécution de cet exercice se fait à l’aide de la commande `python extraire_lexique.py`, et que le code de l’exercice 3 est écrit dans un seul et même script, il n’est pas nécessaire de se soucier de l’importation des fonctions. Nous pouvons donc utiliser une écriture Python simple et directe pour définir nos fonctions.
      
+     这里的affichage我们选择用一个tsv表格(`resultats.tsv`)来展示, 如果只是在终端显示的话, 会出现每一列无法对齐的现象, 会有点难看
+
+     (`def entrée_exo2()`)是为了得到fonction(`lire_corpus(fichiers)`), 这里我们选择用一个boucle来得到一个liste des noms du fichiers而不是简单地将它们直接写到一个liste里面(`['Corpus/01.txt', 'Corpus/02.txt', ...]`)是为了防止之后如果我们增加corpus的数量, 比如到一百, 这时就只用改range范围和if条件即可, 而不用一个一个地填
      
-   - Tâche 2
+   - Tâche 2 (git merge s2ex3SY` : r3)
  
      coming soon
 
