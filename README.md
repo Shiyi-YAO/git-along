@@ -107,10 +107,73 @@ r3 : YAO Shiyi
      La fonction (`def entree_exo2()`) a pour objectif de fournir le paramètre à la fonction (`lire_corpus(fichiers)`). Pour cela, nous avons choisi d’utiliser une boucle afin de construire automatiquement une liste de noms de fichiers, plutôt que de les écrire manuellement dans une liste (`['Corpus/01.txt', 'Corpus/02.txt', ...]`), cette approche permet de rendre le programme plus flexible : si le nombre de fichiers du corpus augmente par la suite (par exemple jusqu’à une centaine de fichiers), il suffira de modifier l’intervalle de la fonction range ou d’ajuster une condition, sans avoir à ajouter chaque chemin de fichier individuellement.
 
 
-   - Tâche 2 (git merge s2ex3SY` : r3)
+   - Tâche 2 (`git merge s2ex3SY` : r3)
  
-     coming soon
+     ```
+     def choisir_entree():
 
+        # Plusiseurs cas à vérifier selon l'entrée
+        my_parser = argparse.ArgumentParser(description="Extraire la fréquence des mots et la fréquence des documents d'un corpus textuel.")
+        my_parser.add_argument( "--mode", choices=["arg", "cat", "ls"], help="Mode de lecture du corpus")
+        my_parser.add_argument("fichiers", nargs="*", help="Fichiers du corpus (utilisé avec --mode arg)")
+
+        args = my_parser.parse_args()
+
+        # 1. aucun argument, aucune entrée standard
+        if args.mode is None:
+           fichiers = entrée_exo2()
+           return lire_corpus(fichiers)
+   
+        # 2. s'il y a un argument
+        if args.mode == "arg":
+           return lire_arg(args.fichiers)
+   
+        # 3. cat : contenu des docs
+        elif args.mode == "cat":
+           return lire_cat()
+   
+        # 4. ls : une liste de fichiers
+        elif args.mode == "ls":
+           return lire_ls()
+
+     if __name__ == "__main__":
+        corpus = choisir_entree()
+        afficher_res(corpus)
+     ```
+     这个part最开始有点难, 因为我们都不是很熟悉如何使用argparser, 因为exo3的三种读取stdin的方式我们用了三个fonctions来实现(lire_arg(fichiers), lire_cat(), lire_ls()), 所以我们最开始的思路是可以通过判断我们的entrée d'utilisateur然后来选择我们使用哪个fonction来读取stdin, 最开始的思路是这样的:
+     lire_arg(fichiers)需要的是(`python extraire_lexique.py Corpus/*.txt`)所以我们将它的参数加入到parseur中,
+     lire_cat()需要的是(cat Corpus/*.txt)它的输出所有文件中的内容
+     lire_ls()需要的是(ls Corpus/*.txt它的输出是所有文件名)
+     那么我们只需要读取stdin然后判断是否有argument, stdin中是否有‘.txt’, code如下
+     ```
+     def choisir_stdin():
+
+        my_parser = argparse.ArgumentParser(description="Extraire la fréquence des mots et la fréquence des documents d'un corpus textuel.")
+        my_parser.add_argument("fichiers", nargs="*", help="Fichiers du corpus (si absent, lecture depuis l'entrée standard)")
+
+        args = my_parser.parse_args()
+
+     # Plusiseurs cas à vérifier selon l'entrée
+
+     # 1. s'il y a un argument
+     if args.fichiers: # s'il y a un argument
+        return lire_arg(args.fichiers)
+
+     lignes = [ligne.strip() for ligne in sys.stdin if ligne.strip()]
+
+     # 2. aucun argument, aucune entrée standard
+        if not lignes:
+           fichiers = entree_exo2()
+           return lire_corpus(fichiers)
+
+     # 3. s'il s'agit un entrée standard
+     # 3.1 ls : une liste de fichiers
+        if all(os.path.isfile(ligne) for ligne in lignes):
+           return lire_ls()
+
+     # 3.2 cat : contenu des docs
+        return lire_cat()
+     ```
 
 
 
