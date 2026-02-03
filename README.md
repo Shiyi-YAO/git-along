@@ -16,7 +16,7 @@ r3 : YAO Shiyi
 
 
 - #### Rôle 3
-   - Tâche 1 : compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
+   - #### Tâche 1 : compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
 
       - Difficulté
 
@@ -35,7 +35,7 @@ r3 : YAO Shiyi
         ```
 
   
-   - Tâche 2 : Effectuer le script par l'entrée standard - ls (`ls Corpus/*.txt | python extraire_lexique.py`)
+   - #### Tâche 2 : Effectuer le script par l'entrée standard - ls (`ls Corpus/*.txt | python extraire_lexique.py`)
 
       - Difficulté
     
@@ -73,7 +73,7 @@ r3 : YAO Shiyi
 
 - #### Merges vers main
 
-   - Tâche 1 (`git merge s2ex2SY` : r3)
+   - #### Tâche 1 (`git merge s2ex2SY` : r3)
 
      ```
      # --- affichage des résultats --- #
@@ -107,7 +107,7 @@ r3 : YAO Shiyi
      La fonction (`def entree_exo2()`) a pour objectif de fournir le paramètre à la fonction (`lire_corpus(fichiers)`). Pour cela, nous avons choisi d’utiliser une boucle afin de construire automatiquement une liste de noms de fichiers, plutôt que de les écrire manuellement dans une liste (`['Corpus/01.txt', 'Corpus/02.txt', ...]`), cette approche permet de rendre le programme plus flexible : si le nombre de fichiers du corpus augmente par la suite (par exemple jusqu’à une centaine de fichiers), il suffira de modifier l’intervalle de la fonction range ou d’ajuster une condition, sans avoir à ajouter chaque chemin de fichier individuellement.
 
 
-   - Tâche 2 (`git merge s2ex3SY` : r3)
+   - #### Tâche 2 (`git merge s2ex3SY` : r3)
  
      Cette partie a été la plus difficile au départ, car nous ne maîtrisions pas encore très bien l’utilisation du module (`argparse`) et dans l’exercice 3, nous avons implémenté trois façons différentes de lire l’entrée standard (`stdin`), à l’aide de trois fonctions distinctes : (`lire_arg(fichiers)`), (`lire_cat()`) et (`lire_ls()`).
 
