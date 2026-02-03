@@ -42,10 +42,29 @@ r3 : YAO Shiyi
         
       - Solution
     
-        au lieu de 看这段命令整体, 我先看左边的部分(`ls Corpus/*.txt`), 因为他的输出将会是我的script的输入, 我在终端lancer这个命令, 我得到了 :
+        Au lieu d’analyser cette commande dans son ensemble, je me concentre d’abord sur la partie gauche, à savoir(`ls Corpus/*.txt`). En effet, la sortie de cette commande sera utilisée comme entrée de mon script. Pour comprendre précisément ce qui est transmis via l’entrée standard, j’exécute (`ls Corpus/*.txt > files.txt`) dans le terminal et j'obtiens : 
            ```
-           
+           Corpus/01.txt
+           Corpus/02.txt
+           Corpus/03.txt
+           ...
            ```
+        Il s’agit donc clairement d’une liste de noms de fichiers, un par ligne, chaque ligne étant terminée par un caractère de retour à la ligne (\n), la fonction (`lire_corpus(fichiers)`) attend en paramètre une liste de chemins de fichiers donc la seule chose à faire est de transformer ces lignes lues depuis l’entrée standard en une liste Python.<br>
+        Pour ce faire, il suffit de créer une liste vide, puis de parcourir chaque ligne provenant de stdin à l’aide d’une boucle, et d’ajouter chaque chemin à la liste :
+         ```
+         liste_chemins = []
+         for line in sys.stdin:
+            liste_chemins.append(line)
+         ```
+        需要注意的是, 由于我们的每一行都有换行(`\n`), 所以需要在加入的时候用(`.strip()`)将其去除掉
+         ```
+         liste_chemins.append(line.strip())
+         ```
+        然后我们réutiliser fonction (`lire_corpus(fichiers)`), 就可以得到一个与exo2一样可以作为参数被放进我们的数词(`compter_occurrences(liste_textes)`)和数文件数(`compter_nb_doc(corpus)`)的fonction的输出了
+        ```
+        corpus = lire_corpus(liste_chemins)
+        return corpus
+        ```
 
 
 
