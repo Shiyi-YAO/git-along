@@ -109,6 +109,43 @@ r3 : YAO Shiyi
 
    - Tâche 2 (`git merge s2ex3SY` : r3)
  
+     Cette partie a été la plus difficile au départ, car nous ne maîtrisions pas encore très bien l’utilisation du module (`argparse`) et dans l’exercice 3, nous avons implémenté trois façons différentes de lire l’entrée standard (`stdin`), à l’aide de trois fonctions distinctes : (`lire_arg(fichiers)`), (`lire_cat()`) et (`lire_ls()`).
+
+     Notre idée initiale était donc de déterminer, à partir de l’entrée fournie par l’utilisateur, quelle fonction devait être utilisée pour lire les données depuis (`stdin`) :
+      - `lire_arg(fichiers)` correspond au cas où l’utilisateur exécute la commande (`python extraire_lexique.py Corpus/*.txt`) ; dans ce cas, les chemins des fichiers sont passés comme arguments au parser.
+      - `lire_cat()` correspond au cas où l’entrée provient de (`cat Corpus/*.txt`), dont la sortie contient le contenu de tous les fichiers.
+      - `lire_ls()` correspond au cas où l’entrée provient de (`ls Corpus/*.txt`), dont la sortie est une liste de noms de fichiers.
+     ```
+     def choisir_stdin():
+
+        my_parser = argparse.ArgumentParser(description="Extraire la fréquence des mots et la fréquence des documents d'un corpus textuel.")
+        my_parser.add_argument("fichiers", nargs="*", help="Fichiers du corpus (si absent, lecture depuis l'entrée standard)")
+
+        args = my_parser.parse_args()
+
+     # Plusiseurs cas à vérifier selon l'entrée
+
+     # 1. s'il y a un argument
+     if args.fichiers: # s'il y a un argument
+        return lire_arg(args.fichiers)
+
+     lignes = [ligne.strip() for ligne in sys.stdin if ligne.strip()]
+
+     # 2. aucun argument, aucune entrée standard
+        if not lignes:
+           fichiers = entree_exo2()
+           return lire_corpus(fichiers)
+
+     # 3. s'il s'agit un entrée standard
+     # 3.1 ls : une liste de fichiers
+        if all(os.path.isfile(ligne) for ligne in lignes):
+           return lire_ls()
+
+     # 3.2 cat : contenu des docs
+        return lire_cat()
+     ```
+     我们在其中加入了(aucun argument, aucune entrée standard)这个条件来让用户可以使用exo2的命令(python extraire_lexique.py)来运行代码
+     这个方法看起来是很完美, 但当我们运行的时候, 我们的tsv中只有表头而没有词语这些, 然后为了回答这个问题, 我们询问了ChatGPT, 这是因为我们在这个fonction中已经读取了stdin的内容, 导致我们exo3的三个fonctions没有内容可读, 所以我们就在想是否有一个办法可以直接判断命令行本身(比如是cat还是ls还是以参数形式出现), 一下是我们的最终版本:
      ```
      def choisir_entree():
 
@@ -140,44 +177,6 @@ r3 : YAO Shiyi
         corpus = choisir_entree()
         afficher_res(corpus)
      ```
-     这个part最开始有点难, 因为我们都不是很熟悉如何使用argparser, 因为exo3的三种读取stdin的方式我们用了三个fonctions来实现(lire_arg(fichiers), lire_cat(), lire_ls()), 所以我们最开始的思路是可以通过判断我们的entrée d'utilisateur然后来选择我们使用哪个fonction来读取stdin, 最开始的思路是这样的:
-     lire_arg(fichiers)需要的是(`python extraire_lexique.py Corpus/*.txt`)所以我们将它的参数加入到parseur中,
-     lire_cat()需要的是(cat Corpus/*.txt)它的输出所有文件中的内容
-     lire_ls()需要的是(ls Corpus/*.txt它的输出是所有文件名)
-     那么我们只需要读取stdin然后判断是否有argument, stdin中是否有‘.txt’, code如下
-     ```
-     def choisir_stdin():
-
-        my_parser = argparse.ArgumentParser(description="Extraire la fréquence des mots et la fréquence des documents d'un corpus textuel.")
-        my_parser.add_argument("fichiers", nargs="*", help="Fichiers du corpus (si absent, lecture depuis l'entrée standard)")
-
-        args = my_parser.parse_args()
-
-     # Plusiseurs cas à vérifier selon l'entrée
-
-     # 1. s'il y a un argument
-     if args.fichiers: # s'il y a un argument
-        return lire_arg(args.fichiers)
-
-     lignes = [ligne.strip() for ligne in sys.stdin if ligne.strip()]
-
-     # 2. aucun argument, aucune entrée standard
-        if not lignes:
-           fichiers = entree_exo2()
-           return lire_corpus(fichiers)
-
-     # 3. s'il s'agit un entrée standard
-     # 3.1 ls : une liste de fichiers
-        if all(os.path.isfile(ligne) for ligne in lignes):
-           return lire_ls()
-
-     # 3.2 cat : contenu des docs
-        return lire_cat()
-     ```
-
-
-
-
 
 
 
