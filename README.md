@@ -33,6 +33,7 @@ r3 : YAO Shiyi
         mots_doc = set(re.findall(r'\w+', doc.lower())) 
         mots_doc = [m for m in mots_doc if m.isalpha()] # .isalpha() --> seulement les alphabet peut etre mis dans la liste des mots
         ```
+
   
    - Tâche 2 : Effectuer le script par l'entrée standard - ls (`ls Corpus/*.txt | python extraire_lexique.py`)
 
@@ -69,6 +70,41 @@ r3 : YAO Shiyi
         return corpus
         ```
 
+
+- #### Merges vers main
+
+   - Tâche 1
+ 
+     ```
+     # --- affichage des résultats --- #
+     def afficher_res(corpus):
+        nb_occ = compter_occurrences(corpus)
+        nb_doc = compter_nb_doc(corpus)
+      
+        with open("./resultats.tsv", "w", encoding="utf-8") as f:
+           f.write("mot\toccurrence\tnb_document\n")
+           for mot in sorted(nb_occ.keys()):
+              f.write(f"{mot}\t{nb_occ[mot]}\t{nb_doc.get(mot, 0)}\n")
+
+     # --- l'entrée pour exo2 --- #
+        def entrée_exo2(): 
+           fichiers = []
+           for i in range(1,31,1):
+              if i < 10:
+                 fichiers.append(f"Corpus/0{i}.txt")
+              else:
+                 fichiers.append(f"Corpus/{i}.txt")
+           return fichiers
+      
+      fichiers = entrée_exo2()
+      corpus = lire_corpus(fichiers)
+      afficher_res(corpus)
+     ```
+     
+     
+   - Tâche 2
+ 
+     coming soon
 
 
 
