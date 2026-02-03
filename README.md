@@ -150,8 +150,12 @@ r3 : YAO Shiyi
      # 3.2 cat : contenu des docs
         return lire_cat()
      ```
-     我们在其中加入了(aucun argument, aucune entrée standard)这个条件来让用户可以使用exo2的命令(python extraire_lexique.py)来运行代码
-     这个方法看起来是很完美, 但当我们运行的时候, 我们的tsv中只有表头而没有词语这些, 然后为了回答这个问题, 我们询问了ChatGPT, 这是因为我们在这个fonction中已经读取了stdin的内容, 导致我们exo3的三个fonctions没有内容可读, 所以我们就在想是否有一个办法可以直接判断命令行本身(比如是cat还是ls还是以参数形式出现), 一下是我们的最终版本:
+     Nous avons également ajouté une condition supplémentaire (`aucun argument et aucune entrée standard`) afin de permettre à l’utilisateur d’exécuter le programme avec la commande de l’exo2(`python extraire_lexique.py`)
+     Cette approche semblait correcte en théorie. Cependant, lors de l’exécution, nous avons constaté que le fichier .tsv généré ne contenait que l’en-tête, sans aucune donnée lexicale. Afin de comprendre l’origine de ce problème, nous avons besoin de l’aide de ChatGPT, on trouve que le contenu de l’entrée standard (stdin) était déjà lu dans cette fonction, ce qui empêchait ensuite les trois fonctions de lecture de l’exercice 3 d’accéder à ces données
+ 
+     Nous avons donc repensé notre approche en cherchant une solution permettant de déterminer directement le mode d’exécution à partir de la commande elle-même (par exemple, distinguer un appel via cat, ls, ou un passage des fichiers en arguments), sans prélire l’entrée standard.
+
+     La version finale de cette solution est présentée ci-dessous.
      ```
      def choisir_entree():
 
@@ -183,7 +187,9 @@ r3 : YAO Shiyi
         corpus = choisir_entree()
         afficher_res(corpus)
      ```
+     Dans cette version, nous avons choisi d’utiliser l’argument --mode dans la configuration du parseur défini avec un ensemble de valeurs possibles (arg, cat, ls), il permet de spécifier explicitement le mode de lecture du corpus. Il suffit ensuite d’ajouter des conditions if pour appeler la fonction de lecture correspondante.
 
+     Et enfin un bloc `if __name__ == "__main__":` qui permet d’exécuter le programme uniquement lorsque le script est lancé directement. Il appelle la fonction `choisir_entree()` pour construire le corpus, puis transmet ce dernier à `afficher_res` afin d’afficher les résultats.
 
 
 
