@@ -16,7 +16,8 @@ r3 : YAO Shiyi
 
 
 - #### Rôle 3
-   - #### Tâche 1 : compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
+   - #### Tâche 1
+     compter le nomdre de documents par mot (fonction `compter_nb_doc(corpus)`)
 
       - Difficulté
 
