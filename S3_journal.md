@@ -1,13 +1,13 @@
 # Séance 3
 
-### Membres du groupe
+## Membres du groupe
 ```
 r1 : ...
 r2 : YAO Shiyi
 r3 : ...
 ```
 
-### Introduction du tâche
+## Introduction du tâche
 
 Extraire les métadonnées qui serviront au filtrage dans les données fournies au format XML (RSS) :
 
@@ -49,12 +49,12 @@ Les informations dont nous avons besoin se trouvent généralement dans les bali
 6. categories : <category>...</category> -> Il peut y avoir plusieurs catégories pour un même article, il faut donc les regrouper dans une liste.
 ```
 
-### Les difficulté et solustions
+## Les difficulté et solustions
 
-- #### Rôle 1
+- ### Rôle 1
 
 
-- #### Rôle 2
+- ### Rôle 2
    - #### Tâche
      Utiliser le module etree de la librairie standard de python qui permet de lire, modifier et explorer du XML (fonction `lire_rss_etree(chemin_fichier)`)
      
@@ -66,6 +66,6 @@ Les informations dont nous avons besoin se trouvent généralement dans les bali
   
      coming soon
 
-- #### Rôle 3
+- ### Rôle 3
 
-### Choix des merges
+## Choix des merges
