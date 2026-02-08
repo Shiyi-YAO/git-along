@@ -18,6 +18,28 @@ Extraire les métadonnées qui serviront au filtrage dans les données fournies 
 - la date de l’article ;
 - les catégories auxquelles appartient l’article.
 
+以一个XML截取为例:
+```
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+   ...
+    <item>
+      <title>Une histoire politique des musiques noires américaines</title>
+      <link>https://www.blast-info.fr/articles/2025/une-histoire-politique-des-musiques-noires-americaines-sMSxOjn2TaaHRPBZiDGBsA</link>
+      <description>Blues, jazz, soul, rap : les artistes afro-américains ont de tout temps développé un discours contestataire dans leur musique. Un essai passionnant de Christophe Ylla-Somers : “Le Son de la Révolte”, raconte l’histoire de plus de cent ans de lutte en…</description>
+      <guid isPermaLink="true">https://www.blast-info.fr/articles/2025/une-histoire-politique-des-musiques-noires-americaines-sMSxOjn2TaaHRPBZiDGBsA</guid>
+      <category domain="https://www.blast-info.fr/tags/culture-zj-sGOhLT-2Gjzuq1CDA5g">Culture</category>
+      <category domain="https://www.blast-info.fr/tags/musique-25kaLk3HRgyj7KePfW9lcg">Musique</category>
+      <category domain="https://www.blast-info.fr/tags/etats-unis-XypXLrNTQy-h-dxhCfIHXw">États-Unis</category>
+      <pubDate>Sun, 09 Feb 2025 11:00:00 +0009</pubDate>
+      ...
+    </item>
+    <item>
+    ...
+    </item>
+```
+
 ### Les difficulté et solustions
 
 - #### Rôle 1
