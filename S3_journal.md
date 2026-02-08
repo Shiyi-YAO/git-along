@@ -48,6 +48,15 @@ Les informations dont nous avons besoin se trouvent généralement dans les bali
 5. date : <pubDate>...</pubDate>
 6. categories : <category>...</category> -> Il peut y avoir plusieurs catégories pour un même article, il faut donc les regrouper dans une liste.
 ```
+Voici un exemple d'extraction:
+```
+id : https://www.blast-info.fr/articles/2025/une-histoire-politique-des-musiques-noires-americaines-sMSxOjn2TaaHRPBZiDGBsA
+source : Blast -- articles.xml
+title : Une histoire politique des musiques noires américaines
+description : Blues, jazz, soul, rap : les artistes afro-américains ont de tout temps développé un discours contestataire dans leur musique. Un essai passionnant de Christophe Ylla-Somers : “Le Son de la Révolte”, raconte l’histoire de plus de cent ans de lutte en…
+date : Sun, 09 Feb 2025 11:00:00 +0009
+categories : ['Culture', 'Musique', 'États-Unis']
+```
 
 ## Les difficulté et solustions
 
