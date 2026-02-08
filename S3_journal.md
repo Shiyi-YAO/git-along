@@ -18,7 +18,7 @@ Extraire les métadonnées qui serviront au filtrage dans les données fournies 
 - la date de l’article ;
 - les catégories auxquelles appartient l’article.
 
-以一个XML截取为例:
+Exemple d’extraction à partir d’un fichier XML (RSS):
 ```
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
@@ -38,6 +38,15 @@ Extraire les métadonnées qui serviront au filtrage dans les données fournies 
     <item>
     ...
     </item>
+```
+Les informations dont nous avons besoin se trouvent généralement dans les balises suivantes (qui sont normalement des balises enfants de la balise `<item>`, mais il existe des exceptions, que vous verrez dans l’explication suivante)
+```
+1. id : <link>...</link>
+2. source : Nom de fichier
+3. title : <title>...</title>
+4. description : <description>...</description>
+5. date : <pubDate>...</pubDate>
+6. categories : <category>...</category> -> Il peut y avoir plusieurs catégories pour un même article, il faut donc les regrouper dans une liste.
 ```
 
 ### Les difficulté et solustions
