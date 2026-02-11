@@ -125,13 +125,16 @@ categories : ['Culture', 'Musique', 'États-Unis']
 
 ## Améliorations
 
-- ### Rôle 1 (Lecteur `r3` : ...)
+- ### Rôle 1
+  (Lecteur `r3` : ...)
 
 
-- ### Rôle 2 (Lecteur `r1` : CHALABI Sara Amina)
+- ### Rôle 2
+  (Lecteur `r1` : CHALABI Sara Amina)
 
 
-- ### Rôle 3 (Lecteur `r2` : YAO Shiyi)
+- ### Rôle 3
+  (Lecteur `r2` : YAO Shiyi)
    - #### Problèmes
      coming soon
    - #### Solutions
