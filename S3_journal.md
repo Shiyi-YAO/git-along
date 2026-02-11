@@ -105,9 +105,8 @@ categories : ['Culture', 'Musique', 'États-Unis']
         ```
      2. On récupère aussi les catégories dans `<channel>`(s'il y en a, sinon une liste vide) et celui dans `<item>`(s'il y en a, sinon une liste vide), et on fait le choix entre ces deux liste ou les fusionnent quand le category existe à la fois dans `<channel>` et `<item>`
         ```
-        # Pour éviter que les catégories se retrouvent dans <channel> au lieu de <item> dans certains fichiers, tels que Flux RSS
         channel = root.find("channel")
-        if channel is not None and channel.findall("category") is not None: # "if element is not None" est utilisé pour éviter les erreurs, car certaines balises peuvent être absentes selon les flux RSS
+        if channel is not None and channel.findall("category") is not None: 
             channel_categories = [c.text for c in channel.findall("category") if c is not None and c.text]
         else:
             channel_categories = []
