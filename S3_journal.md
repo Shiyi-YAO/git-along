@@ -123,4 +123,24 @@ categories : ['Culture', 'Musique', 'États-Unis']
         
 - ### Rôle 3
 
-## Choix des merges
+## Améliorations
+
+- ### Rôle 1 (Lecteur `r3 : ...`)
+
+
+- ### Rôle 2 (Lecteur `r1 : CHALABI Sara Amina`)
+
+
+- ### Rôle 3 (Lecteur `r2 : YAO Shiyi`)
+   - #### Problèmes
+     coming soon
+   - #### Solutions
+     coming soon
+
+
+
+
+
+
+
+
