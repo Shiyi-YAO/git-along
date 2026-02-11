@@ -98,10 +98,30 @@ categories : ['Culture', 'Musique', 'États-Unis']
        ```
      
    - #### Solutions
-  
-     - 1. ...
-       2. 
-
+     1. Comme ils sont des `str` et les sous-balises commencent pas `<`, alors on vérifie d'abord s'il y a le sous-balise dans la description et on peut les découper pas `<` est prendre que la première élément découpé qui est le contenu qu'on veut pour la description
+        ```
+        if "<" in description: 
+          description = description.split("<")[0].strip() # .strip() est pour enlever les ...
+        ```
+     2. On récupère aussi les catégories dans `<channel>`(s'il y en a, sinon une liste vide) et celui dans `<item>`(s'il y en a, sinon une liste vide), et on fait le choix entre ces deux liste ou les fusionnent quand le category existe à la fois dans `<channel>` et `<item>`
+        ```
+        # Pour éviter que les catégories se retrouvent dans <channel> au lieu de <item> dans certains fichiers, tels que Flux RSS
+        channel = root.find("channel")
+        if channel is not None and channel.findall("category") is not None: # "if element is not None" est utilisé pour éviter les erreurs, car certaines balises peuvent être absentes selon les flux RSS
+            channel_categories = [c.text for c in channel.findall("category") if c is not None and c.text]
+        else:
+            channel_categories = []
+        ...
+        data = {
+          ...
+          "categories": (
+            list(dict.fromkeys(channel_categories + item_categories)) # Si les catégories existent à la fois dans <item> et <channel>, on fusionne les deux listes en supprimant les doublons
+            if len(item_categories) > 0 and len(channel_categories) > 0
+            else item_categories if len(item_categories) > 0 # Sinon, s’il n’y a que des catégories dans <item>, on utilise item_categories
+            else channel_categories # Sinon, on utilise channel_categories
+          )}
+        ```
+        
 - ### Rôle 3
 
 ## Choix des merges
