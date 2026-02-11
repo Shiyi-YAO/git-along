@@ -67,7 +67,7 @@ categories : ['Culture', 'Musique', 'États-Unis']
    - #### Tâche
      Utiliser le module etree de la librairie standard de python qui permet de lire, modifier et explorer du XML (fonction `lire_rss_etree(chemin_fichier)`), l'aventage du module (`etree`) est qu'on peut directement capturer les couches hiérarchies du fichier XML, etree le représenter est avec une structure arbresence. les éléments(méthodes) utilisé pour cette partie
      - `tree = ET.parse('country_data.xml')` : représenter ce fichier avec une structure arborescence
-     - `root = tree.getroot()` : récupérer la racine, ici c'est <rss></rss>
+     - `root = tree.getroot()` : récupérer la racine, ici c'est `<rss></rss>`
      - `root.iter(nom_du_balise)` : parcourir récursivement tous les sous-arbres
      - `Element.find(nom_du_balise)` : récupérer le premier élément avec une balise particulière
      - `Element.findall` : récupérer seulement les éléments avec une balise qui sont les descendants directs de l'élément courant
