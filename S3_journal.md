@@ -75,11 +75,11 @@ categories : ['Culture', 'Musique', 'États-Unis']
      - `if element is not None` : pour éviter les erreurs, car certaines balises peuvent être absentes selon les flux RSS
      
    - #### Difficulté
-     - Quand on récupère la description, on note qu'il y pas seulement des texte mais des balises enfants et ils sont transformé sous format html par `CDATA`, c-à-d on perd la structure arborescence ici, on ne peut plus utiliser la façon de etree pour éviter les balises enfant
+     - 1. Quand on récupère la description, on note qu'il y pas seulement des texte mais des balises enfants et ils sont transformé sous format html par `CDATA`, c-à-d on perd la structure arborescence ici, on ne peut plus utiliser la façon de etree pour éviter les balises enfant
      ```
      <description><![CDATA[Une nouvelle étude met en avant une rupture culturelle avec les pays du Nord de l'Europe dans l'utilisation de l'argent liquide. Mais si l'usage baisse, la relation aux espèces reste particulière, notamment en France. <br /><br /><img src="https://images.bfmtv.com/kopVULJfD_g_fRYhXbQAgSPnNn4=/4x33:1252x735/800x0/images/-472513.jpg" />]]></description>
      ```
-     - Quand on récupère les catégories, je note que pas tous les balise <category> est dans <item> mais certains sont dans <channel>, du coup un simple itération de <item> ne suffit pas, et il y a des cas où le category existe à la fois dans <channel> et <item>, et il peut y avoir des doublons.
+     - 2. Quand on récupère les catégories, je note que pas tous les balise <category> est dans <item> mais certains sont dans <channel>, du coup un simple itération de <item> ne suffit pas, et il y a des cas où le category existe à la fois dans `<channel>` et `<item>`, et il peut y avoir des doublons.
        Flux RSS - BFM BUSINESS - Conommation.xml
        ```
        <channel>
@@ -99,7 +99,8 @@ categories : ['Culture', 'Musique', 'États-Unis']
      
    - #### Solutions
   
-     coming soon
+     - 1. ...
+       2. 
 
 - ### Rôle 3
 
