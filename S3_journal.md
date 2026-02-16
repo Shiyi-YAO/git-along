@@ -102,7 +102,7 @@ categories : ['Culture', 'Musique', 'États-Unis']
        ```
      
    - #### Solutions
-     1. Comme ils sont des `str` et les sous-balises commencent pas `<`, alors on vérifie d'abord s'il y a le sous-balise dans la description et on peut les découper pas `<` est prendre que la première élément découpé qui est le contenu qu'on veut pour la description
+     1. Comme ils sont des `str` et les sous-balises commencent pas `<`, alors on vérifie d'abord s'il y a le sous-balise dans la description et on peut les découper par `<` est prendre que la première élément découpé qui est le contenu qu'on veut pour la description
         ```
         if "<" in description: 
           description = description.split("<")[0].strip() # .strip() est pour enlever les ...
