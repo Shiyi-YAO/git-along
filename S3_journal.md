@@ -140,9 +140,14 @@ categories : ['Culture', 'Musique', 'États-Unis']
 - ### Rôle 3
   (Lecteur `r2` : YAO Shiyi)
    - #### Problèmes
-     coming soon
+     En lisant les code de rôle 3 qui utilise `feedparser`, j’ai constaté que certaines difficultés observées en tant que rôle 2, notamment concernant les balises `<description>` et `<category>`, n’avaient pas été prises en compte (voir la description détaillée des difficultés dans la partie `Difficultés` du rôle 2).
    - #### Solutions
-     coming soon
+     Ayant déjà identifié ces problèmes lors de la réalisation de ma propre partie, j’ai appliqué une logique similaire pour modifier le code du rôle 3. Cela permet de garantir que les résultats finaux obtenus soient le même. Mais je suis pas très familier avec l’utilisation de `feedparser`, ça m'a pris un peu de temps d’étudier son fonctionnement --> ce moduel permet de parser facilement des flux RSS sans avoir à manipuler directement la structure XML, il extrait automatiquement les informations principales d’un flux RSS (titre, lien, description, date de publication, identifiant, catégories, etc.) et les met à disposition sous forme de structures Python simples (dictionnaires et listes).
+
+     一Voici les méthodes j’ai appris et utilisés : :
+       - `feed.feed` : accessible aux éléments du canal (title, link, description, pubdate ... )
+       - `feed.entries` : accessible aux articles (items/entries)
+       - Vous trouverez plus d’informations sur le module etree à ce lien : `https://feedparser.readthedocs.io/en/latest/common-rss-elements/`
 
 
 
