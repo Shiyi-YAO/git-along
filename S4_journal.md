@@ -6,7 +6,7 @@ r1 : CHALABI Sara Amina
 r2 : YAO Shiyi
 r3 : ...
 ```
-👉 Même répartition des rôles que la semaine 3
+Même répartition des rôles que la semaine 3
    
 ### Les difficultés et solustions
 
