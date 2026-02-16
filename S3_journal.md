@@ -76,6 +76,7 @@ categories : ['Culture', 'Musique', 'États-Unis']
      - `Element.findall` : récupérer seulement les éléments avec une balise qui sont les descendants directs de l'élément courant
      - `Element.text` : accèder au contenu textuel de l'élément
      - `if element is not None` : pour éviter les erreurs, car certaines balises peuvent être absentes selon les flux RSS
+     - Je vous conseille de regarder les utilisation de `etree` à le lien suivant car vous y trouverez des exemples d'utilisation qui permet une compréhension plus intuitive
      - Vous trouverez plus d’informations sur le module etree à ce lien : `https://docs.python.org/fr/3/library/xml.etree.elementtree.html`
      
    - #### Difficulté
@@ -147,6 +148,7 @@ categories : ['Culture', 'Musique', 'États-Unis']
      Voici les méthodes j’ai appris et utilisés : :
        - `feed.feed` : accessible aux éléments du canal (title, link, description, pubdate ... )
        - `feed.entries` : accessible aux articles (items/entries)
+       - Je vous conseille de regarder les utilisation de `feedparser` à le lien suivant car vous y trouverez des exemples d'utilisation qui permet une compréhension plus intuitive
        - Vous trouverez plus d’informations sur le module etree à ce lien : `https://feedparser.readthedocs.io/en/latest/common-rss-elements/`
      
      Cela pourrait vous intéresser : Quand vous lisez les codes, vous verrez des parties où il y `getattr`, c'est une façon que rôle 3 utilise pour réaliser `getattr(obj, "nom de l'attribut", valeur par défaut)` qui permet de récupèrer le contenu de `nom de balise` ; s'il n'existe pas, elle renvoie la valeur par défaut.
