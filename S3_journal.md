@@ -144,10 +144,12 @@ categories : ['Culture', 'Musique', 'États-Unis']
    - #### Solutions
      Ayant déjà identifié ces problèmes lors de la réalisation de ma propre partie, j’ai appliqué une logique similaire pour modifier le code du rôle 3. Cela permet de garantir que les résultats finaux obtenus soient le même. Mais je suis pas très familier avec l’utilisation de `feedparser`, ça m'a pris un peu de temps d’étudier son fonctionnement --> ce module permet de parser facilement des flux RSS sans avoir à manipuler directement la structure XML, il extrait automatiquement les informations principales d’un flux RSS (titre, lien, description, date de publication, identifiant, catégories, etc.) et les met à disposition sous forme de structures Python simples (dictionnaires et listes).
 
-     一Voici les méthodes j’ai appris et utilisés : :
+     Voici les méthodes j’ai appris et utilisés : :
        - `feed.feed` : accessible aux éléments du canal (title, link, description, pubdate ... )
        - `feed.entries` : accessible aux articles (items/entries)
        - Vous trouverez plus d’informations sur le module etree à ce lien : `https://feedparser.readthedocs.io/en/latest/common-rss-elements/`
+     
+     Cela pourrait vous intéresser : Quand vous lisez les codes, vous verrez des parties où il y `getattr`, c'est une façon que rôle 3 utilise pour réaliser `getattr(obj, "nom de l'attribut", valeur par défaut)` qui permet de récupèrer le contenu de `nom de balise` ; s'il n'existe pas, elle renvoie la valeur par défaut.
 
 
 
