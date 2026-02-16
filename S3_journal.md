@@ -66,21 +66,24 @@ categories : ['Culture', 'Musique', 'États-Unis']
 - ### Rôle 2
    - #### Tâche
      Utiliser le module `etree` de python qui permet de lire, modifier et explorer du XML (fonction `lire_rss_etree(chemin_fichier)`), L’avantage du module `etree` est qu’il permet de capturer directement les différentes couches hiérarchiques du fichier XML et de les représenter sous forme d’une structure arborescente.
-- Les éléments (méthodes) utilisés pour cette partie sont :
-     - `tree = ET.parse('country_data.xml')` : représenter ce fichier avec une structure arborescence
+     
+     Les éléments (méthodes) utilisés pour cette partie sont :
+     
+     - `tree = ET.parse('country_data.xml')` : représenter ce fichier sous forme d’une structure arborescente 
      - `root = tree.getroot()` : récupérer la racine, ici c'est `<rss></rss>`
      - `root.iter(nom_du_balise)` : parcourir récursivement tous les sous-arbres
      - `Element.find(nom_du_balise)` : récupérer le premier élément avec une balise particulière
      - `Element.findall` : récupérer seulement les éléments avec une balise qui sont les descendants directs de l'élément courant
      - `Element.text` : accèder au contenu textuel de l'élément
      - `if element is not None` : pour éviter les erreurs, car certaines balises peuvent être absentes selon les flux RSS
+     - Vous trouverez plus d’informations sur le module etree à ce lien : `https://docs.python.org/fr/3/library/xml.etree.elementtree.html`
      
    - #### Difficulté
      1. Quand on récupère la description, on note qu'il y pas seulement des texte mais des balises enfants et ils sont transformé sous format html par `CDATA`, c-à-d on perd la structure arborescence ici, on ne peut plus utiliser la façon de etree pour éviter les balises enfant
      ```
      <description><![CDATA[Une nouvelle étude met en avant une rupture culturelle avec les pays du Nord de l'Europe dans l'utilisation de l'argent liquide. Mais si l'usage baisse, la relation aux espèces reste particulière, notamment en France. <br /><br /><img src="https://images.bfmtv.com/kopVULJfD_g_fRYhXbQAgSPnNn4=/4x33:1252x735/800x0/images/-472513.jpg" />]]></description>
      ```
-     2. Quand on récupère les catégories, je note que pas tous les balise <category> est dans <item> mais certains sont dans <channel>, du coup un simple itération de <item> ne suffit pas, et il y a des cas où le category existe à la fois dans `<channel>` et `<item>`, et il peut y avoir des doublons.
+     2. Quand on récupère les catégories, je note que toutes les balises `<category>` ne se trouvent pas uniquement dans les `<item>` : certaines sont définies au niveau de `<channel>`, du coup un simple itération de `<item>` ne suffit pas, et il y a des cas où le category existe à la fois dans `<channel>` et `<item>`, et il peut y avoir des doublons.
        Flux RSS - BFM BUSINESS - Conommation.xml
        ```
        <channel>
