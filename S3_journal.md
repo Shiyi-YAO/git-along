@@ -137,7 +137,9 @@ categories : ['Culture', 'Musique', 'États-Unis']
      ```
      Et j'ai aussi corrigé la condition pour la description pour éviter des cas où ("description").text est None
      ```
-     if "<" in description: --> if description and "<" in description:
+     if "<" in description:
+             ↓
+     if description and "<" in description:
      ```
         
 - ### Rôle 3
