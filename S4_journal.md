@@ -68,4 +68,57 @@ python3 rss_reader.py ~/Desktop/corpus -m regex
 
 
 ## Choix de merge
-
+Pour le merge de cet exercice, nous avons choisi de reprendre l’approche de r2 pour combiner les trois fonctions de lecture ainsi que la fonction `main`, dans son approche, nous pouvons trouver:
+   - une configuration de parseur et la fonction de combinaison similaire à l'exo1
+     ```
+     def lire_arborescence(chemin_dossier, lire_dossier="iterdir"):
+   
+       if lire_dossier == "iterdir":
+           return lire_arborescence_pathlib_iterdir(chemin_dossier)
+       elif lire_dossier == "glob":
+           return lire_arborescence_pathlib_glob(chemin_dossier)
+       elif lire_dossier == "os":
+           return lire_arborescence_os(chemin_dossier)
+       else:
+           raise ValueError(f"façon de lire le dossier inconnue : {lire_dossier}")
+     ...
+     parser.add_argument(
+        "-ld", "--lire_dossier",
+        choices=["iterdir", "glob", "os"],
+        default="iterdir",
+        help="Façon de lire le dossier (défaut : iterdir)"
+     )
+     ```
+   - une fonction supplémentaire qui permet de sauvegarder les résultats dans un fichier lorsque le traitement porte sur un dossier contenant un grand nombre de fichiers, afin d’éviter un affichage trop volumineux dans le terminal.
+     ```
+     def sauvegarder_articles_txt(articles, chemin_fichier, dossier_sortie):
+      
+        dossier_sortie = Path(dossier_sortie)
+        dossier_sortie.mkdir(exist_ok=True) # la façon de créer un dossier dans python
+      
+        nom_fichier_sortie = Path(chemin_fichier).stem # prendre le nom du fichier sans l'extension'
+        fichier_sortie = dossier_sortie/f"{nom_fichier_sortie}.txt"
+      
+        with open(fichier_sortie, "w") as f:
+           for article in articles:
+              for k, v in article.items():
+                 f.write(f"{k}: {v}\n")
+              f.write("\n")
+     ```
+   - une condition `if` qui permet de déterminer automatiquement si l’entrée fournie correspond à un fichier ou à un dossier
+     ```
+     if chemin.is_file(): # si entrée est un seul fichier, afficher directement dans terminal
+        articles = lire_rss(args.fichier, args.methode) # s'il s'agit un seul fichier, on va juste choisir la méthode
+        for article in articles:
+           for k, v in article.items():
+              print(f"{k} : {v}")
+           print()
+   
+      elif chemin.is_dir(): # si entrée est un dossier, sauvgarder les résultats dans un dossier des fichiers texte
+        chemin_fichiers_iter = lire_arborescence(args.fichier, args.lire_dossier) # on choisir d'abord la façon de lire le dossier pour obtenir une liste ou un itérateur qui permet de parcourir les chemins des fichiers
+        dossier_sortie = args.methode
+   
+        for chemin_fichier in chemin_fichiers_iter:
+           articles = lire_rss(chemin_fichier, args.methode)
+           sauvegarder_articles_txt(articles, chemin_fichier, dossier_sortie)
+     ```
