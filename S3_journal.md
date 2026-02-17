@@ -153,7 +153,58 @@ categories : ['Culture', 'Musique', 'États-Unis']
      
      Cela pourrait vous intéresser : Quand vous lisez les codes, vous verrez des parties où il y `getattr`, c'est une façon que rôle 3 utilise pour réaliser `getattr(obj, "nom de l'attribut", valeur par défaut)` qui permet de récupèrer le contenu de `nom de balise` ; s'il n'existe pas, elle renvoie la valeur par défaut.
 
+## Choix des merges
+Dans la dernière partie, on n'a pas vraiment eu à faire de choix de merge, car dès le début on est tous partis du squelette sur la branche `dev` fourni par r1 pour développer nos propres parties de code. 
 
+Ce squelette proposait déjà :
+  - une fonction de combinaison permettant de fusionner les différentes méthodes développées par les trois membres du groupe (Après avoir configuré le parser, il suffit d’appeler la fonction combinée lire_rss en lui passant le chemin du fichier RSS ainsi que la méthode de lecture souhaitée)
+    ```
+    def lire_rss(chemin_fichier, methode="regex"):
+
+      if methode == "regex":
+          return lire_rss_regex(chemin_fichier)
+      elif methode == "etree":
+          return lire_rss_etree(chemin_fichier)
+      elif methode == "feedparser":
+          return lire_rss_feedparser(chemin_fichier)
+      else:
+          raise ValueError(f"Méthode inconnue : {methode}")
+    ```
+  - une fonction main chargée de configurer le parser et d’afficher les résultats.
+    ```
+    def main():
+      parser = argparse.ArgumentParser(description="Lecteur de flux RSS")
+    
+      parser.add_argument(
+        "fichier",
+        help="Chemin vers un fichier RSS XML"
+      )
+    
+      parser.add_argument(
+        "-m", "--methode",
+        choices=["regex", "etree", "feedparser"],
+        default="regex",
+        help="Méthode d'extraction (défaut : regex)"
+      )
+    
+      args = parser.parse_args()
+    
+      articles = lire_rss(args.fichier, args.methode) # l'appelle de la fonction de choisir le méthode ici
+    
+      for article in articles:
+        print(article)
+    
+    
+    if __name__ == "__main__":
+      main()
+    ```
+Pour l'affichage finale, nous avons appliqué la façon de r2 qui consiste à parcourir la liste des dictionnaires , où chaque clé correspond à un attribut et chaque valeur au contenu associé (par exemple :`{id: https... ; source : Flux RSS... ; ...}`)
+    ```
+    for article in articles[:1]: # vous pouvez modifier le chiffre dans [] pour controler le nombre d'article affiché
+      for k, v in article.items():
+        print(f"{k} : {v}")
+      print() # une ligne entre les articles
+    ```
 
 
 
