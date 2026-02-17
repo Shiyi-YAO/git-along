@@ -198,7 +198,7 @@ Ce squelette proposait déjà :
     if __name__ == "__main__":
       main()
     ```
-Pour l'affichage finale, nous avons appliqué la façon de r2 qui consiste à parcourir la liste des dictionnaires , où chaque clé correspond à un attribut et chaque valeur au contenu associé (par exemple :`{id: https... ; source : Flux RSS... ; ...}`)
+Pour l'affichage finale, nous avons appliqué la façon de r2 qui consiste à parcourir la liste des dictionnaires , où chaque clé correspond à un attribut et chaque valeur au contenu associé (par exemple : `{id: https... ; source : Flux RSS... ; ...}`)
     ```
     for article in articles[:1]: # vous pouvez modifier le chiffre dans [] pour controler le nombre d'article affiché
       for k, v in article.items():
