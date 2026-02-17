@@ -125,6 +125,18 @@ categories : ['Culture', 'Musique', 'États-Unis']
             else channel_categories # Sinon, on utilise channel_categories
           )}
         ```
+   - #### Corrections
+     Après avoir comparé la correction fourni par les profs et tester mes codes sur l'ensemble des fichiers, j'ai constaté un problème : la méthode basée sur xml.etree.ElementTree ne permet pas de traiter correctement tous les fichiers XML. Lors de l’exécution, les erreurs m'indiquent que certains fichiers XML ne sont pas valides ou ne respectent pas strictement la structure attendue. Afin de rendre le programme exécutable, j'ajoute un bloc `try / except` qui afficher un message qui indique les fichiers non valides, et le programme continue son exécution en renvoyant une liste vide pour le fichier concerné.
+     ```
+     # pour traiter les fichier XML non valide
+     try:
+       root = ET.parse(chemin_fichier)
+     except ET.ParseError:
+       print(f"Fichier {chemin_fichier} invalide.", file=sys.stderr)
+       return []
+     ```
+     Et j'ai aussi corrigé la condition pour la description pour éviter des cas où ("description").text est None
+     if "<" in description: --> if description and "<" in description: 
         
 - ### Rôle 3
 
