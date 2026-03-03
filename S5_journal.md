@@ -34,9 +34,9 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
  
      Au début, j’étais assez perdue par rapport aux entrées et aux sorties de mes fonctions :
      ```
-     filtre_date(item: dict, ...) → bool:
-     filtre_source(item: dict, ...) → bool:
-     filtre_categories(item: dict, ...) → bool:
+     filtre_date(item: dict, date_début, date_fin) → bool:
+     filtre_source(item: dict, source) → bool:
+     filtre_categories(item: dict, categories) → bool:
      
      filtrage(filtres, articles) -> list[dict]
      ```
@@ -55,10 +55,53 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
      Franchement, c’est cette idée d’uniformiser les arguments qui m’a le plus posé problème.
      
    - #### Solutions
+     inspiré par les codes donnés dans le cours:
+     ```
+     from typing import Callable
+     def adder(how_much: int) -> Callable[[int], int]:
+        def add(to: int) -> int:
+           return to + how_much
+        return add
+     ```
+     我最开始其实也没有看懂我如何从这个例子得到灵感来写我的代码, 但是我观察到这是一个fonction qui retoune une autre fonction, 所以我一直到我如果要写fonction de filtre的话, 我可以以这样的方式来写, 这样就可以将我们所需要的argument分开来保证最后返回的fonction所需要的argument的统一性,我观察到我们三个fonction都需要的是item: dict, 所以这个放到内层, 而每个需要的不同的参数date, source, categorie这些就放在外层, 这样只需要在main中将每一个fonction加入进filtres即可
+     ```
+     def filtre_date(item: dict, debut, fin) -> bool:
+        def filtre(item: dict) -> bool:
+           pass
+      
+     def filtre_source(source) -> Callable[[dict], bool]:
+        def filtre(item: dict) -> bool:
+           pass
 
+     def filtre_categories(item: dict, categories) -> bool:
+        def filtre(item: dict) -> bool:
+           pass
+
+     def filtrage(filtres, articles) -> tuple[list[dict], int]:
+   
+        liste_filtré = []
+        nb = 0
+
+        if len(filtres) == 0:
+           print("Aucun filtrages entrée")
+           return(articles, len(articles))
+
+        for article in articles:
+           continuer = True
+           for filtre in filtres:
+              if not filtre(article):
+                 continuer = False
+                 break
+           if continuer:
+              liste_filtré.append(article)
+              nb += 1
+
+     return liste_filtré, nb
+     ```
 
 - ### Rôle 3
 
 ## Merges (combinaison les 3 filtrages)
+
 
 
