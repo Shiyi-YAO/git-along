@@ -130,7 +130,7 @@ En observant les données, nous avons identifié l’origine du problème :
 blast, elucid ... : date: Sat, 08 Feb 2025 17:00:00 +0009 # Pour les autres sources, la ligne date se termine par un fuseau horaire numérique (par exemple +0009)
 BFM               : date: Sun, 09 Feb 2025 11:03:33 GMT # Pour BFM, la date se termine par GMT
 ```
-Or, dans le code initial, le format %z utilisé avec datetime.strptime ne reconnaît que les fuseaux horaires de type +xxxx ou -xxxx, et ne fonctionne donc pas avec GMT.
+Or, dans le code initial, le format %z utilisé avec datetime.strptime ne reconnaît que les fuseaux horaires de type +xxxx, et ne fonctionne donc pas avec GMT.
 
 Pour corriger cela, r2 a ajouté une légère modification à son code : il a intégré un second essai de parsing dans un bloc try/except, afin de gérer explicitement le format GMT
 ```
@@ -146,6 +146,7 @@ def filtre_date(debut: str, fin: str) -> Callable[[dict], bool]:
    ...
 ```
 Grâce à cette adaptation, tous les articles, quelle que soit leur source, peuvent désormais être correctement filtrés selon le critère de date.
+
 
 
 
