@@ -73,54 +73,26 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
      Voici la structure que j’ai adoptée :
      ```
      from typing import Callable
-     def filtre_date(debut: str, fin: str) -> Callable[[dict], bool]:
-        def filtre(item: dict) -> bool:
-           pass
-      
+
      def filtre_source(source) -> Callable[[dict], bool]:
         def filtre(item: dict) -> bool:
            pass
 
-     def filtre_categories(item: dict, categories) -> bool:
-        def filtre(item: dict) -> bool:
-           pass
-
-     def filtrage(filtres, articles) -> tuple[list[dict], int]:
-   
-        liste_filtré = []
-        nb = 0
-
-        if len(filtres) == 0:
-           print("Aucun filtrages entrée")
-           return(articles, len(articles))
-
-        for article in articles:
-           continuer = True
-           for filtre in filtres:
-              if not filtre(article):
-                 continuer = False
-                 break
-           if continuer:
-              liste_filtré.append(article)
-              nb += 1
-
-     return liste_filtré, nb
+     def filtrage(filtres, articles) -> list[dict]:
+        pass
 
      def main():
         ...
         filtres = []
-        if args.date_debut or args.date_fin:
-           filtres.append(filtre_date(args.date_debut, args.date_fin))
         if args.source:
            filtres.append(filtre_source(args.source))
-        if args.categories:
-           filtres.append(filtre_categories(args.categories, args.categories_match))
      ```
      Dans main, il suffit donc d’ajouter chaque filtre dans la liste filtres. Ensuite, la fonction filtrage applique successivement chaque filtre à chaque article.
 
 - ### Rôle 3
 
 ## Merges (combinaison les 3 filtrages)
+
 
 
 
