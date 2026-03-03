@@ -105,6 +105,47 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
 
 ## Merges (combinaison les 3 filtrages)
 
+La fusion finale a été réalisée par r2. À cette étape, nous avons harmonisé la manière d’écrire et d’utiliser chaque parseur afin qu’ils suivent tous la même logique adoptée par r2. 
+```
+parser.add_argument('-d', '--date_debut', type=str, help="Format YYYY-MM-DD")
+parser.add_argument('-f', '--date_fin', type=str, help="Format YYYY-MM-DD")
+parser.add_argument("-s","--source", choices=("blast", "elucid", "bfm", "libération", "franceinfo", "lefigaro"), default=None)
+parser.add_argument('-c', '--categories', type=str, nargs='+')
+parser.add_argument('-cm', '--categories-match', choices=['all', 'any'], default='all', help="Mode de correspondance pour --categories")
+```
+
+Concernant la fonction de filtrage, nous avons choisi de conserver l’approche proposée par r1 en ajoutant une valeur `len(articles)` retounée pour indiquer le nombre des articles trouvés, cette combinaison est plus élégante que celle de r2.
+```
+def filtrage(filtres: list[bool], articles: list[dict]) -> tuple[list[dict], int]:
+
+    for filtre in filtres:
+        articles = list(filter(filtre, articles))
+    return articles, len(articles)
+```
+
+Cependant, lors du merge, r2 a remarqué un problème : la fonction de r1 ne parvenait pas à traiter correctement le flux RSS de BFM lorsqu’on combinait les trois filtres.
+
+En observant les données, nous avons identifié l’origine du problème :
+```
+blast, elucid ... : date: Sat, 08 Feb 2025 17:00:00 +0009 # Pour les autres sources, la ligne date se termine par un fuseau horaire numérique (par exemple +0009)
+BFM               : date: Sun, 09 Feb 2025 11:03:33 GMT # Pour BFM, la date se termine par GMT
+```
+Or, dans le code initial, le format %z utilisé avec datetime.strptime ne reconnaît que les fuseaux horaires de type +xxxx ou -xxxx, et ne fonctionne donc pas avec GMT.
+
+Pour corriger cela, r2 a ajouté une légère modification à son code : il a intégré un second essai de parsing dans un bloc try/except, afin de gérer explicitement le format GMT
+```
+def filtre_date(debut: str, fin: str) -> Callable[[dict], bool]:
+   ...
+      try:
+            date_article = datetime.strptime(
+                date_str, "%a, %d %b %Y %H:%M:%S %z" # pour match Sat, 08 Feb 2025 17:00:00 +0009, %z ne match que +xxxx
+      except ValueError:
+            try:
+                date_article = datetime.strptime(
+                    date_str, "%a, %d %b %Y %H:%M:%S GMT" # pour match date: Sun, 09 Feb 2025 11:03:33 GMT
+   ...
+```
+Grâce à cette adaptation, tous les articles, quelle que soit leur source, peuvent désormais être correctement filtrés selon le critère de date.
 
 
 
