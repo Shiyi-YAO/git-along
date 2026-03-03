@@ -47,6 +47,7 @@ Après l’exécution, un message récapitulatif s’affiche :
     - nombre des articles traités
     - nombre des articles trouvés
     - ex: `3658 articles ont été traités, 2 ont été trouvés`
+      
 Votre articles trouvés sera sauvegarder dans un fichier texte `résultat.txt`
 
 
