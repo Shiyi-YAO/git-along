@@ -105,7 +105,7 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
 
 ## Merges (combinaison les 3 filtrages)
 
-La fusion finale a été réalisée par r2. À cette étape, nous avons harmonisé la manière d’écrire et d’utiliser chaque parseur afin qu’ils suivent tous la même logique adoptée par r2. 
+Le merge final a été réalisée par r2. À cette étape, nous avons harmonisé la manière d’écrire et d’utiliser chaque parseur afin qu’ils suivent tous la même logique adoptée par r2. 
 ```
 parser.add_argument('-d', '--date_debut', type=str, help="Format YYYY-MM-DD")
 parser.add_argument('-f', '--date_fin', type=str, help="Format YYYY-MM-DD")
@@ -146,6 +146,7 @@ def filtre_date(debut: str, fin: str) -> Callable[[dict], bool]:
    ...
 ```
 Grâce à cette adaptation, tous les articles, quelle que soit leur source, peuvent désormais être correctement filtrés selon le critère de date.
+
 
 
 
