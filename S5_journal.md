@@ -72,7 +72,8 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
 
      Voici la structure que j’ai adoptée :
      ```
-     def filtre_date(item: dict, debut, fin) -> bool:
+     from typing import Callable
+     def filtre_date(debut: str, fin: str) -> Callable[[dict], bool]:
         def filtre(item: dict) -> bool:
            pass
       
@@ -120,6 +121,7 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
 - ### Rôle 3
 
 ## Merges (combinaison les 3 filtrages)
+
 
 
 
