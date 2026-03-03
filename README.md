@@ -29,10 +29,10 @@ Ce projet permet de parcourir l’arborescence d’un dossier contenant des flux
     - filtrage par date
         - `date_début` et `date_fin` doit etre sous format YYYY-MM-DD (année-mois-date)
     - filtrage par source
-        les sources disponibles sont : `blast`, `elucid`, `bfm`, `libération`, `franceinfo`, `lefigaro`
-        ⚠️attention aux caractères accentués, si une erreur apparaît
-        par exemple : `rss_reader.py: error: argument -s/--source: invalid choice: 'libération' (choose from 'blast', 'elucid', 'bfm', 'libération', 'franceinfo', 'lefigaro')`
-        copiez-collez exactement la valeur indiquée dans le message d’erreur afin d’éviter tout problème d’encodage.
+        - les sources disponibles sont : `blast`, `elucid`, `bfm`, `libération`, `franceinfo`, `lefigaro`
+        - ⚠️attention aux caractères accentués, si une erreur apparaît
+        - par exemple : `rss_reader.py: error: argument -s/--source: invalid choice: 'libération' (choose from 'blast', 'elucid', 'bfm', 'libération', 'franceinfo', 'lefigaro')`
+        - copiez-collez exactement la valeur indiquée dans le message d’erreur afin d’éviter tout problème d’encodage.
     - pour `catégories`, c'est possible d'entrer plusieurs, et vous pouvez choisir le mode de match en utilisant l'option -cm, ici vous pouvez choisi `all` pour tout match ou `any` pour match un des entrées
     voici un exemple de filtres:
     ```
