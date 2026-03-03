@@ -1,9 +1,9 @@
 # Projet — Lecteur et filtre de flux RSS
 
 Ce projet permet de parcourir l’arborescence d’un dossier contenant des flux RSS et de filtrer les articles selon plusieurs critères :
-    - date
-    - source
-    - catégories
+- date
+- source
+- catégories
 
 ## Getting started
 
