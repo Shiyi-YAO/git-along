@@ -55,7 +55,7 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
      Franchement, c’est cette idée d’uniformiser les arguments qui m’a le plus posé problème.
      
    - #### Solutions
-     inspiré par les codes donnés dans le cours:
+     Je me suis inspirée de l’exemple donné en cours :
      ```
      from typing import Callable
      def adder(how_much: int) -> Callable[[int], int]:
@@ -63,7 +63,14 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
            return to + how_much
         return add
      ```
-     我最开始其实也没有看懂我如何从这个例子得到灵感来写我的代码, 但是我观察到这是一个fonction qui retoune une autre fonction, 所以我一直到我如果要写fonction de filtre的话, 我可以以这样的方式来写, 这样就可以将我们所需要的argument分开来保证最后返回的fonction所需要的argument的统一性,我观察到我们三个fonction都需要的是item: dict, 所以这个放到内层, 而每个需要的不同的参数date, source, categorie这些就放在外层, 这样只需要在main中将每一个fonction加入进filtres即可
+     En observant ce bloc de code, j’ai remarqué qu’il s’agissait d’une fonction qui retourne une autre fonction où je peux séparer mes arguments.
+ 
+     À partir de là, j’ai compris que je pouvais appliquer le même principe à mes fonctions de filtre. Voici l'idée:
+     - Les paramètres spécifiques à chaque filtre (`date`, `source`, `catégories`) sont définis dans la fonction externe.
+     - Le paramètre commun à tous les filtres (`item: dict`) est placé dans la fonction interne.
+     Ainsi, la fonction retournée prend toujours le même type d’argument `(item: dict)` et renvoie toujours un booléen. Cela permet donc d’uniformiser les entrées, comme demandé dans l’énoncé.
+
+     Voici la structure que j’ai adoptée :
      ```
      def filtre_date(item: dict, debut, fin) -> bool:
         def filtre(item: dict) -> bool:
@@ -97,11 +104,23 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
               nb += 1
 
      return liste_filtré, nb
+
+     def main():
+        ...
+        filtres = []
+        if args.date_debut or args.date_fin:
+           filtres.append(filtre_date(args.date_debut, args.date_fin))
+        if args.source:
+           filtres.append(filtre_source(args.source))
+        if args.categories:
+           filtres.append(filtre_categories(args.categories, args.categories_match))
      ```
+     Dans main, il suffit donc d’ajouter chaque filtre dans la liste filtres. Ensuite, la fonction filtrage applique successivement chaque filtre à chaque article.
 
 - ### Rôle 3
 
 ## Merges (combinaison les 3 filtrages)
+
 
 
 
