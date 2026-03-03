@@ -91,7 +91,20 @@ Cette absence d’harmonisation rend l’ensemble du code confus et introduit pl
 
 - ### Rôle 3
 
+## Améliorations pendant la relecture
+
+- ### Rôle 3
+  (Lecteur `r2` : YAO Shiyi)
+
+  1. J'ai appliqué la structure de squelette à ses parties pour faciliter la merge
+  2. J'ai modifié sa façon d'écrire la fonctions (une seule fonction -> une fonction qui retourne une autre fonction) pour garantir le même entrée et sortie
+  3. J'ai ajouté une autre option dans parseur et modifie ses fonction pour que l'utilisateur peut choisir le mode de match les catégories (soit tout soit un des catégories)
+     ```
+     parser.add_argument('-cm', '--categories-match', choices=['all', 'any'], default='all', help="Mode de correspondance pour --categories")
+     ```
+
 ## Merges (combinaison les 3 filtrages)
+
 
 
 
