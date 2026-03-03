@@ -26,23 +26,28 @@ Ce projet permet de parcourir l’arborescence d’un dossier contenant des flux
     python rss_reader.py chemin_vers_votre_dossier -d [date_début] -f [date_fin] -s [source] -c [catégories] -cm [mode de match les catégories]
     ```
     ⚠️ Tous les filtres sont optionnels
-    - filtrage par date
+    - Filtrage par `date`
         - `date_début` et `date_fin` doit etre sous format YYYY-MM-DD (année-mois-date)
-    - filtrage par source
+    - Filtrage par `source`
         - les sources disponibles sont : `blast`, `elucid`, `bfm`, `libération`, `franceinfo`, `lefigaro`
         - ⚠️attention aux caractères accentués, si une erreur apparaît
         - par exemple : `rss_reader.py: error: argument -s/--source: invalid choice: 'libération' (choose from 'blast', 'elucid', 'bfm', 'libération', 'franceinfo', 'lefigaro')`
         - copiez-collez exactement la valeur indiquée dans le message d’erreur afin d’éviter tout problème d’encodage.
-    - pour `catégories`, c'est possible d'entrer plusieurs, et vous pouvez choisir le mode de match en utilisant l'option -cm, ici vous pouvez choisi `all` pour tout match ou `any` pour match un des entrées
-    voici un exemple de filtres:
-    ```
-    python rss_reader.py chemin_vers_votre_dossier -d 2025-02-01 -s blast -c culture cinéma -cm all
-    ```
-    - normalement, après le filtrage, il aura un message qui vous induique des infos sur le filtrage
-        - nombre des articles traités
-        - nombre des articles trouvés
-        - ex: `3658 articles ont été traités, 2 ont été trouvés`
-    - votre articles trouvés sera sauvegarder dans un fichier texte `résultat.txt`
+    - Filtrage par `catégories`
+        - vous pouvez indiquer une ou plusieurs catégories avec -c
+        - le mode de correspondance se règle avec l’option -cm
+            - `all` -> toutes les catégories doivent correspondre
+            - `any` -> au moins une catégorie doit correspondre
+    - Exemple complet
+        ```
+        python rss_reader.py chemin_vers_votre_dossier -d 2025-02-01 -s blast -c culture cinéma -cm all
+        ```
+- Résultat
+Après l’exécution, un message récapitulatif s’affiche :
+    - nombre des articles traités
+    - nombre des articles trouvés
+    - ex: `3658 articles ont été traités, 2 ont été trouvés`
+Votre articles trouvés sera sauvegarder dans un fichier texte `résultat.txt`
 
 
 
