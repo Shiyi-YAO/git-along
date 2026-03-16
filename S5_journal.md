@@ -148,6 +148,26 @@ def filtre_date(debut: str, fin: str) -> Callable[[dict], bool]:
 Grâce à cette adaptation, tous les articles, quelle que soit leur source, peuvent désormais être correctement filtrés selon le critère de date.
 
 
+# Exemples des commandes
+
+- Sérialiser un fichier ou un dossier des fichiers RSS vers .xml/.json/.pkl
+    ```
+    python rss_parcours.py chemin_fichier/dossier_rss -o corpus.xml/.json/.pkl
+    ```
+    - vous trouverez ce fichier dans meme endroit où vous avez lancé le commandes
+    
+- Une fois vous avez le corpus sérialisé, vous pouvez le parcourir
+    ```
+    python rss_parcours.py chemin_fichier/dossier_rss/fichier_sérialisé
+    ```
+    - le résultat sera affiché dans terminal
+    
+- Vous pouvez aussi le filtrer par date/source/categories
+    ```
+    python rss_parcours.py chemin_fichier/dossier_rss/fichier_sérialisé -d [date_debut] -f [date_fin] -s [source+] -c [categories+]
+    ```
+    - tous les arguments sont optionels, et vous pouvez en mettre plusieurs pour le source et categories
+    - le résultat sera affiché dans terminal
 
 
 
