@@ -45,13 +45,27 @@ Par exemple :
 
 Finalement, nous avons décidé de faire le freestyle. Comme nous ne disposions pas encore d’un corpus déjà sérialisé, nous avons combiné les deux objectifs mentionnés précédemment : (1) obtenir un corpus sérialisé et (2) permettre la conversion entre différents formats de fichiers. Nous avons donc ajouté dans `rss_parcours.py` une fonctionnalité permettant de transformer des flux RSS en corpus sérialisé, avec l’option correspondante dans bash (`-o corpus.xml/json/pkl`). Cette fonctionnalité permet également de convertir un corpus sérialisé d’un format à un autre.
 
+Nous avons intégré ces fonctionnalités à l’avance dans le squelette. Ainsi, il ne nous restait plus qu’à implémenter les deux fonctions de lecture et d’écriture, ce qui facilitera le merge final et garantira le bon fonctionnement du programme.
+
 ## Les difficultés et solustions
 
 - ### Rôle 1
 
 
 - ### Rôle 2
-这两个fonction de lecture和ecriture `save_json`, `load_json`对我来说还挺简单的, 因为json文件需要存入Dict, 所以
+Pour ce rôle, nous devons utiliser le format JSON ainsi que le module `json` afin de sauvegarder et de recharger le corpus dans ou depuis un fichier, en proposant différents formats.
+
+Les deux fonctions `save_json` et `load_json` sont simples à implémenter pour moi. En effet, les fichiers JSON stockent des données sous forme de dictionnaires (`dict`). Il suffit donc de convertir les objets `Article` en dictionnaires, et inversement. Pour cela, nous utilisons les méthodes vues en cours : `asdict(Article)` pour transformer un objet `Article` en dictionnaire, et `Article(**dict)` pour reconstruire un objet `Article` à partir d’un dictionnaire. Ensuite, nous utilisons les fonctions `dump` et `load` du module `json` pour écrire dans le fichier et lire son contenu.
+```
+liste_article.append(asdict(article)) # Article -> Dict
+corpus.append(Article(**article))     # Dict -> Article
+
+with open(output_file, "w") as f:
+  json.dump(liste_article, f, indent=2) # Écrire list[Article] dans le fichier output_file
+
+with open(input_file, "r") as f:
+  liste_article = json.load(f)          # Lire list[dict] du fichier input_file
+```
 
 - ### Rôle 3
 
