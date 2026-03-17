@@ -60,6 +60,7 @@ Les deux fonctions `save_json` et `load_json` sont simples à implémenter pour 
 liste_article.append(asdict(article)) # Article -> Dict
 corpus.append(Article(**article))     # Dict -> Article
 ```
+
 ```
 with open(output_file, "w") as f:
   json.dump(liste_article, f, indent=2) # Écrire list[Article] dans le fichier output_file
