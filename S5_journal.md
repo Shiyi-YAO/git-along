@@ -55,12 +55,12 @@ Nous avons intégré ces fonctionnalités à l’avance dans le squelette. Ainsi
 - ### Rôle 2
 Pour ce rôle, nous devons utiliser le format JSON ainsi que le module `json` afin de sauvegarder et de recharger le corpus dans ou depuis un fichier, en proposant différents formats.
 
-Les deux fonctions `save_json` et `load_json` sont simples à implémenter pour moi. En effet, les fichiers JSON stockent des données sous forme de dictionnaires (`dict`). Il suffit donc de convertir les objets `Article` en dictionnaires, et inversement. Pour cela, nous utilisons les méthodes vues en cours : `asdict(Article)` pour transformer un objet `Article` en dictionnaire, et `Article(**dict)` pour reconstruire un objet `Article` à partir d’un dictionnaire. Ensuite, nous utilisons les fonctions `dump` et `load` du module `json` pour écrire dans le fichier et lire son contenu.
+Les deux fonctions `save_json` et `load_json` sont simples à implémenter pour moi. En effet, les fichiers JSON stockent des données sous forme de dictionnaires (`dict`). Il suffit donc de convertir les objets `Article` en dictionnaires, et inversement. Pour cela, nous utilisons les méthodes vues en cours : `asdict(Article)` pour transformer un objet `Article` en dictionnaire, et `Article(**dict)` pour reconstruire un objet `Article` à partir d’un dictionnaire. 
 ```
 liste_article.append(asdict(article)) # Article -> Dict
 corpus.append(Article(**article))     # Dict -> Article
 ```
-
+Ensuite, nous utilisons les fonctions `dump` et `load` du module `json` pour écrire dans le fichier et lire son contenu.
 ```
 with open(output_file, "w") as f:
   json.dump(liste_article, f, indent=2) # Écrire list[Article] dans le fichier output_file
