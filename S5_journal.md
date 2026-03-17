@@ -7,12 +7,12 @@ r2 : YAO Shiyi
 r3 : ...
 ```
 
-## Correction sur le traval du groupe précédent
+## Correction sur le travail du groupe précédent
 Le code du groupe précédent peut être exécuté correctement. Cependant, les options de la commande de filtrage étaient assez longues. Par exemple, pour filtrer par date, il fallait saisir `--date_debut [xxxx-xx-xx]`. Ce n’est pas très pratique pour l’utilisateur. Nous avons donc raccourci toutes les options en utilisant des options courtes (un tiret suivi d’une lettre). Vous trouverez les détails de ces options dans le fichier `README.md`.
 
-根据这次的feuille d'exercice, 由于我们需要在lire un fichier之后获得list[Article] au lieu de list[dict], 所以我们对`rss_reader.py`中三个lecture的focntion做出了一下修改:
+Selon la feuille d’exercice, les fonctions de lecture doivent retourner une liste de type `list[Article]` plutôt que `list[dict]`. Nous avons donc modifié les trois fonctions de lecture dans `rss_reader.py` :
 - `def read_rss_xx(path: str) -> list[dict]` --> `def read_rss_xx(path: str) -> list[Article]`
-- 在focntion内部将article存入list的时候, 直接存入生成的Article对象
+- Les articles ajoutés dans la liste dans ces fonctions sont désormais directement des objets `Article`.
   ```
   articles = []
   for item in items:
@@ -31,6 +31,19 @@ Le code du groupe précédent peut être exécuté correctement. Cependant, les 
 Dans `rss_reader.py`, la fonction `r3_feedparser` inclut une vérification permettant de déterminer si l’entrée était un fichier ou un dossier. Or, cette vérification est déjà effectuée dans `read_rss_dir`. Nous avons donc supprimé cette partie afin d’éviter toute redondance.
 
 Le code ne séparait pas clairement les différentes fonctionnalités, ce qui le rendait difficile à lire. Nous avons donc ajouté des séparateurs tels que `#=============` ou `#-------------` afin de mieux structurer les différentes parties du programme.
+
+## Séparation des codes et le squelette
+Comme la feuille d’exercice précise clairement les fonctionnalités attendues dans chaque fichier, la séparation du code en trois fichiers `.py` ne nous a pas posé de difficulté particulière. Au début, nous hésitions toutefois à savoir s’il fallait modifier directement les trois fonctions `read_rss_xxx` dans `rss_reader.py` pour qu’elles renvoient `list[Article]`, ou bien les conserver et ajouter une fonction supplémentaire chargée de transformer une liste de dictionnaires en une liste d’objets `Article`. Cette seconde solution nous a finalement semblé inutilement compliquée. Nous avons donc choisi de modifier directement ces trois fonctions.
+
+Dans la tâche de cette semaine, la partie la plus difficile a été de comprendre l’objectif global du code que nous devions finalement obtenir. Autrement dit, il fallait comprendre comment combiner toutes les fonctions existantes pour construire un programme permettant de traiter des fichiers via bash. Cet objectif n’était cependant pas très clairement indiqué dans la feuille d’exercice, et parfois certains consigne pouvait nous rend encore plus confus.
+
+Par exemple :
+- dans rss_parcours.py, soit lire des flux RSS et les parser, soit lire un corpus déjà sérialisé
+  - Cependant, il n’était pas très clair comment obtenir ce corpus déjà sérialisé. Nous disposons bien d’une fonction `save_xxx(corpus: list[Article], output_file: Path)`, mais la question reste de savoir d’où provient cette `list[Article]`. Faut-il d’abord lire les fichiers RSS ? Et dans ce cas, faut-il également appliquer un filtrage lors de la lecture ?
+- À titre de débuggage, ajoutez également dans datastructures.py une fonction main pour passer d’un format de sérialisation à un autre depuis bash (avec un parser d’arguments comme avant)
+  - Pourquoi on fait ça ? Et cette conversion doit-elle faire partie de la version finale du programme ?
+
+Finalement, nous avons décidé de faire le freestyle. Comme nous ne disposions pas encore d’un corpus déjà sérialisé, nous avons combiné les deux objectifs mentionnés précédemment : (1) obtenir un corpus sérialisé et (2) permettre la conversion entre différents formats de fichiers. Nous avons donc ajouté dans `rss_parcours.py` une fonctionnalité permettant de transformer des flux RSS en corpus sérialisé, avec l’option correspondante dans bash (`-o corpus.xml/json/pkl`). Cette fonctionnalité permet également de convertir un corpus sérialisé d’un format à un autre.
 
 ## Les difficultés et solustions
 
