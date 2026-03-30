@@ -2,9 +2,9 @@
 
 ## Membres du groupe
 ```
-r1 : ...
-r2 : YAO Shiyi
-r3 : ...
+Elane Grandmougin : 3(b), 4(b)
+Myriam BHS : 3(a), 3(b)
+Shiyi YAO : 4(c)
 ```
 
 ## Introduction du tâche
