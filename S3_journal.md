@@ -9,11 +9,11 @@ Shiyi YAO : 4(c)
 
 ## Problèmes rencontrés et Solutions
 
-### Elane Grandmougin
+### - Elane Grandmougin
 
-### Myriam BHS
+### - Myriam BHS
 
-### Shiyi YAO
+### - Shiyi YAO
 
 # Séance 3
 
