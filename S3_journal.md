@@ -1,3 +1,20 @@
+# Séance 8
+
+## Membres du groupe
+```
+Elane Grandmougin : 3(b), 4(b)
+Myriam BHS : 3(a), 4(a)
+Shiyi YAO : 4(c)
+```
+
+## Problèmes rencontrés et Solutions
+
+### Elane Grandmougin
+
+### Myriam BHS
+
+### Shiyi YAO
+
 # Séance 3
 
 ## Membres du groupe
