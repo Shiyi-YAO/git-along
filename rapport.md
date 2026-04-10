@@ -41,7 +41,7 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ### 2. Lire l’arborescence des fichiers et appliquer des filtres 
 
@@ -49,7 +49,7 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ### 3. (Dé)sérialiser les flux rss 
 
@@ -57,7 +57,7 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ### 4. Analyser morphosyntaxique du contenu textuel 
 
@@ -65,7 +65,7 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ### 5. Topic modeling LDA 
 
@@ -73,7 +73,7 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ### 6. Topic modeling BerTopic 
 
@@ -81,7 +81,7 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ### 7. Visualisations
 
@@ -89,6 +89,10 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 #### - Réalisé
 
-#### - Écart / Reste à faire
+#### - Analyse des écarts
 
 ## III. Conclusion
+
+### 1. Bilan global
+
+### 2. Travail restant
