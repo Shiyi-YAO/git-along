@@ -37,23 +37,58 @@ Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le trav
 
 ### 1. Lire un flux rss unique 
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ### 2. Lire l’arborescence des fichiers et appliquer des filtres 
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ### 3. (Dé)sérialiser les flux rss 
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ### 4. Analyser morphosyntaxique du contenu textuel 
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ### 5. Topic modeling LDA 
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ### 6. Topic modeling BerTopic 
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ### 7. Visualisations
 
+#### - Attendu
+
+#### - Réalisé
+
+#### - Écart / Reste à faire
 
 ## III. Conclusion
