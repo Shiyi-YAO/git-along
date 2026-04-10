@@ -3,7 +3,7 @@
 C'est un projet qui vous aidera à suivre les thématiques et les expressions qui ont fait l’actualité, au fil du temps dans les publications de différents journaux en ligne.
 
 <p align="center">
-  <img src="images/demo.png" width="700">
+  <img src="images/pipeline.png" width="700">
 </p>
 
 Pipeline complet pour ce projet : RSS → corpus → analyse → topic modeling → visualisation
