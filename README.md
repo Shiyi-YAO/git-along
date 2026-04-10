@@ -31,9 +31,9 @@ Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus 
 
 ### 1. Préparations de l'environnement
 
-- 1.1 Ouvrir votre terminal
+#### - Ouvrir votre terminal
 
-- 1.2 Activer l'environnement virtuel (Si vous n’en avez pas encore, veuillez demander à l'IA de créer et d'activer un environnement virtuel basé sur votre appareil.)
+#### - Activer l'environnement virtuel (Si vous n’en avez pas encore, veuillez demander à l'IA de créer et d'activer un environnement virtuel basé sur votre appareil.)
 
 ### 2. Mise en place du projet 
 Les étapes suivantes doivent être exécutées dans le terminal, à l’intérieur de l’environnement virtuel activé. Il vous suffit de copier-coller les commandes ci-dessous et d’appuyer sur Entrée.
