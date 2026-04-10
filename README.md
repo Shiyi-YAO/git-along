@@ -117,7 +117,7 @@ Une fois la lecture vérifiée, on peut construire un corpus réutilisable dans 
 ### 5. Lancer le topic modeling
 Vous pouvez utiliser soit LDA, soit BERTopic.
 
-#### - LDA 
+### - LDA 
 ```
 python run_lda.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_lda.html
 ```
@@ -125,7 +125,7 @@ Un fichier `résultat_lda.html` est créé dans `projet`. Il permet de visualise
     
 ⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
     
-#### - BerTopic
+### - BerTopic
 ```
 python run_bertopic.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_bertopic.html
 ```
@@ -137,7 +137,7 @@ Dans les deux cas, il suffit ensuite d’ouvrir le fichier HTML dans un navigate
 Les fichiers HTML générés permettent d’explorer les thèmes détectés dans le corpus.  
 L’objectif n’est pas d’obtenir une vérité absolue, mais d’identifier les grandes tendances du corpus et les mots qui caractérisent chaque thème.
 
-#### - LDA
+### - LDA
 <p align="center">
     <img src="images/lda.png" width="700">
 </p>
@@ -147,7 +147,7 @@ L’objectif n’est pas d’obtenir une vérité absolue, mais d’identifier l
 - plus deux cercles sont éloignés, plus les topics sont différents ;
 - à droite, on voit les mots les plus représentatifs du topic sélectionné.
 
-#### - BerTopic
+### - BerTopic
 <p align="center">
     <img src="images/bertopic.png" width="700">
 </p>
