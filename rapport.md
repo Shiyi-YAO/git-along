@@ -12,7 +12,7 @@ Projet de Programmation Encadré 2
 
 ## I. Introduction
 
-### 1. Objectif du rapport
+### 1. Objectif et Methodologie d'analyse
 Ce rapport a pour objectif d’évaluer le dépôt fourni comme livrable final du projet de Programmation Encadré 2.
 
 Il s’adresse à un destinataire de type « N+1 » : il ne s’agit pas ici d’expliquer en détail comment utiliser l’outil, mais d’examiner dans quelle mesure le livrable répond aux attentes pédagogiques formulées au cours du semestre.
