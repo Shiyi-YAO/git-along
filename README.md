@@ -1,8 +1,8 @@
 # Manuel d'utilisateur — Projet RSS Topic Modeling
 
-## Présentation du projet
+## I. Présentation du projet
 
-### Que fait ce projet ?
+### 1. Que fait ce projet ?
 
 Ce projet permet de :
 - lire un ou plusieurs fichiers RSS au format XML 
@@ -18,7 +18,7 @@ Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus 
   <img src="images/pipeline.png" width="700">
 </p>
 
-### Que font les scripts ?
+### 2. Que font les scripts ?
 - `rss_reader.py` : lire un fichier_flux_rss.xml
 - `rss_parcours.py` : lire un fichier ou un dossier RSS, regrouper les articles, les filtrer et exporter le corpus
 - `analyzers.py` : ajouter l’analyse linguistique aux articles avec SpaCy, Stanza ou Trankit
@@ -27,7 +27,7 @@ Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus 
 
 ⚠️ vous trouverez dans la fonction `main` de chaque fichier `.py` des exemples de commandes pour exécuter le script
 
-## Préparation vos données et 环境设置
+## II. Préparation vos données et 环境设置
 1. Ouvrir votre terminal(⚠️activer l'environnement virtuel)
 2. Cloner notre repertoitoire et se déplacer dans le projet
     ```
@@ -53,7 +53,7 @@ Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus 
     ```
 
 
-## Commencez (开始体验 !)
+## III. Commencez (开始体验 !)
 
 ### 1. Lire les flux RSS
 Pour vérifier si les articles s'affichent correctement
