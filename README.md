@@ -1,5 +1,6 @@
 # RSS Topic Modeling Project
 Pipeline complet pour : RSS → corpus → tokens → LDA → topics
+
     - lire des flux RSS
     - filtrer des articles
     - ajouter des tokens (NLP)
