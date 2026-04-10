@@ -137,11 +137,12 @@ Vous pouvez utiliser soit LDA, soit BERTopic.
 
 #### - LDA
 <p align="center">
-  <img src="images/lda.png" width="700">
+    <img src="images/lda.png" width="700">
 </p>
+
 #### - BerTopic
 <p align="center">
-  <img src="images/bertopic.png" width="700">
+    <img src="images/bertopic.png" width="700">
 </p>
 
 
