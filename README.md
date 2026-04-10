@@ -29,25 +29,25 @@ Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus 
 
 ## II. Préparations
 
-### Préparations de l'environnement
+### 1. Préparations de l'environnement
 
-1. Ouvrir votre terminal
+- 1.1 Ouvrir votre terminal
 
-2. Activer l'environnement virtuel (Si vous n’en avez pas encore, veuillez demander à l'IA de créer et d'activer un environnement virtuel basé sur votre appareil.)
+- 1.2 Activer l'environnement virtuel (Si vous n’en avez pas encore, veuillez demander à l'IA de créer et d'activer un environnement virtuel basé sur votre appareil.)
 
-### Mise en place du projet 
+### 2. Mise en place du projet 
 Les étapes suivantes doivent être exécutées dans le terminal, à l’intérieur de l’environnement virtuel activé. Il vous suffit de copier-coller les commandes ci-dessous et d’appuyer sur Entrée.
 
-3. Cloner notre repertoitoire et se déplacer dans le projet
+- 2.1 Cloner notre repertoitoire et se déplacer dans le projet
     ```
     git clone https://gitlab.com/plurital-ppe2-2026/groupe11/projet.git
     ```
     ```
     cd projet
     ```
-4. Préparer votre fichier RSS ou votre dossier de flux RSS et renommez-le `Corpus`, afin de pouvoir utiliser directement les commandes données dans la suite.
+- 2.2 Préparer votre fichier RSS ou votre dossier de flux RSS et renommez-le `Corpus`, afin de pouvoir utiliser directement les commandes données dans la suite.
 
-5. Installer les outils nécessaires. : (⚠️ Vous n’avez pas besoin d’installer tous les outils : installez seulement le lecteur RSS et l’outil d’analyse linguistique que vous souhaitez utiliser. Nous recommandons `feedparser` pour la lecture RSS et `SpaCy` pour l’analyse linguistique.)
+- 2.3 Installer les outils nécessaires. : (⚠️ Vous n’avez pas besoin d’installer tous les outils : installez seulement le lecteur RSS et l’outil d’analyse linguistique que vous souhaitez utiliser. Nous recommandons `feedparser` pour la lecture RSS et `SpaCy` pour l’analyse linguistique.)
     - RSS Reader
         - `xml` : Aucun paquet supplémentaire n’est nécessaire : ce mode repose sur les bibliothèques standard de Python.
         - `etree` : Aucun paquet supplémentaire n’est nécessaire : ce mode utilise xml.etree.ElementTree, inclus dans la bibliothèque standard de Python.
