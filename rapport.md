@@ -42,3 +42,17 @@ Le dépôt étudié propose une pipeline de traitement de flux RSS allant de la 
   - `analyzers.py` : ajouter l’analyse linguistique aux articles avec SpaCy, Stanza ou Trankit
   - `datastructures.py` : définir les classes `Article` et `Token`, et gèrer la lecture/écriture des formats XML, JSON et Pickle
   - `run_lda.py` & `run_bertopic.py` : implémenter la modélisation thématique
+
+## II. Évaluation
+
+### 1. Lire un flux rss unique (`rss_reader.py`)
+
+### 2. Lire l’arborescence des fichiers et appliquer des filtres (`rss_parcours.py`)
+
+### 3. (Dé)sérialiser les flux rss (`datastructures.py`)
+
+### 4. Analyser morphosyntaxique du contenu textuel (`analyzers.py`)
+
+### 5. Topic modeling LDA (`run_lda.py`)
+
+### 6. Topic modeling BerTopic (`run_bertopic.py`)
