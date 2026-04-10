@@ -3,14 +3,15 @@
 ## Présentation du projet
 
 ### Que fait ce projet ?
+
 Ce projet permet de :
-    - lire un ou plusieurs fichiers RSS au format XML 
-        - les articles seront représentés par des objets `Article`, contenant les informations suivantes : `id`, `source`, `title`, `description`, `date`, `categories`
-    - construire un corpus réutilisable (xml, json, pkl) 
-    - ajouter une analyse linguistique (tokens, lemmes, POS) 
-        - après cette étape, chaque objet `Article` contiendra un attribut `analysis`, qui regroupe les annotations linguistiques associées à chaque token.
-    - lancer un topic modeling avec LDA ou BERTopic 
-    - exporter un résultat visualisable en HTML
+- lire un ou plusieurs fichiers RSS au format XML 
+    - les articles seront représentés par des objets `Article`, contenant les informations suivantes : `id`, `source`, `title`, `description`, `date`, `categories`
+- construire un corpus réutilisable (xml, json, pkl) 
+- ajouter une analyse linguistique (tokens, lemmes, POS) 
+    - après cette étape, chaque objet `Article` contiendra un attribut `analysis`, qui regroupe les annotations linguistiques associées à chaque token.
+- lancer un topic modeling avec LDA ou BERTopic 
+- exporter un résultat visualisable en HTML
 
 Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus → analyse linguistique → topic modeling → visualisation HTML
 <p align="center">
