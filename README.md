@@ -1,21 +1,32 @@
-# RSS Topic Modeling Project
+# Manuel d'utilisateur — Projet RSS Topic Modeling
 
-C'est un projet qui vous aidera à suivre les thématiques et les expressions qui ont fait l’actualité, au fil du temps dans les publications de différents journaux en ligne.
+## Présentation du projet
 
+### Que fait ce projet ?
+Ce projet permet de :
+    - lire un ou plusieurs fichiers RSS au format XML 
+        - les articles seront représentés par des objets `Article`, contenant les informations suivantes : `id`, `source`, `title`, `description`, `date`, `categories`
+    - construire un corpus réutilisable (xml, json, pkl) 
+    - ajouter une analyse linguistique (tokens, lemmes, POS) 
+        - après cette étape, chaque objet `Article` contiendra un attribut `analysis`, qui regroupe les annotations linguistiques associées à chaque token.
+    - lancer un topic modeling avec LDA ou BERTopic 
+    - exporter un résultat visualisable en HTML
+
+Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus → analyse linguistique → topic modeling → visualisation HTML
 <p align="center">
   <img src="images/pipeline.png" width="700">
 </p>
 
-Pipeline complet pour ce projet : RSS → corpus → analyse → topic modeling → visualisation
+### Que font les scripts ?
+- `rss_reader.py` : lire un fichier_flux_rss.xml
+- `rss_parcours.py` : lire un fichier ou un dossier RSS, regrouper les articles, les filtrer et exporter le corpus
+- `analyzers.py` : ajouter l’analyse linguistique aux articles avec SpaCy, Stanza ou Trankit
+- `datastructures.py` : définir les classes `Article` et `Token`, et gèrer la lecture/écriture des formats XML, JSON et Pickle
+- `run_lda.py` & `run_bertopic.py` : implémenter la modélisation thématique
 
-    - Lire des flux RSS (XML)
-    - Constri
-    - ajouter des tokens (NLP)
-    - faire du topic modeling
+⚠️ vous trouverez dans la fonction `main` de chaque fichier `.py` des exemples de commandes pour exécuter le script
 
-⚠️ vous trouverez dans chaque fichier .py des exemples de commandes dans `main` pour exécuter le fichier
-
-## Pour commencer (跟随下面的步骤)
+## Préparation vos données et 环境设置
 1. Ouvrir votre terminal(⚠️activer l'environnement virtuel)
 2. Cloner notre repertoitoire et se déplacer dans le projet
     ```
@@ -41,18 +52,16 @@ Pipeline complet pour ce projet : RSS → corpus → analyse → topic modeling 
     ```
 
 
-## Usage (接下来可以体验不同功能, 推荐您一步一步跟随下面的步骤来体验我们所有的功能)
+## Commencez (开始体验 !)
 
-### 1. Lire un flux RSS
-C'est une fonction qui vous affiche les infos clé des articles (id, source, title, description, date, categories)
-- Pour lire un seul fichier flus rss
-    ```
-    python rss_reader.py Corpus
-    ```
-- Pour lire un dossier où il y a plusieurs fichiers flus rss
+### 1. Lire les flux RSS
+Pour vérifier si les articles s'affichent correctement
     ```
     python rss_parcours.py Corpus
     ```
+您将会在终端看到`Numéro d'article`, `id`, `source`, `title`, `description`, `date`, `categories`, `analysis`
+
+
 
 ### 2. Construire un corpus_sérialisé (et filtrer)
 - Depuis des fichiers RSS et les sauvegarder sous différents format (`xml`, `json`, `pkl`)
