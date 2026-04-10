@@ -1,54 +1,73 @@
-# Projet — Lecteur et filtre de flux RSS
+# RSS Topic Modeling Project
+Pipeline complet pour :
+- RSS → corpus → tokens → LDA → topics
+- lire des flux RSS
+- filtrer des articles
+- ajouter des tokens (NLP)
+- faire du topic modeling (LDA)
 
-Ce projet permet de parcourir l’arborescence d’un dossier contenant des flux RSS et de filtrer les articles selon plusieurs critères :
-- date
-- source
-- catégories
+⚠️ vous trouverez dans chaque fichier .py des exemples de commandes dans `main` pour exécuter le fichier
 
-## Getting started
-
-- préparer votre dossier : `chemin_vers_votre_dossier`
-- ouvrir votre terminal(c'est mieux d'activer l'environnement virtuel)
-- cloner notre repertoitoire et se déplacer dans le projet
+## Pour commencer (跟随下面的步骤)
+1. Ouvrir votre terminal(⚠️activer l'environnement virtuel)
+2. Cloner notre repertoitoire et se déplacer dans le projet
     ```
-    git clone https://gitlab.com/plurital-ppe2-2026/groupe08/projet.git
+    git clone https://gitlab.com/plurital-ppe2-2026/groupe11/projet.git
+    ```
+    ```
     cd projet
     ```
-    
-- vérifier que vous êtes sur la branche principale
+3. Préparer votre ficheir ou dossier de flux RSS et le nommer `Corpus` pour vous puissse utiliser directement les commandes suivants
+4. Installer les outils : (⚠️ Vous n’avez besoin d’installer que l’outil d’analyse que vous allez utiliser. Nous recommandons SpaCy)
+    - SpaCy : 
     ```
-    git branch
-    git checkout main
+    pip install spacy
+    python -m spacy download fr_core_news_sm
+    ```
+    - Stanza :
+    ```
+    pip install stanza
+    ```
+    - Trankit : (il faut python 3.10)
+    ```
+    uv pip install https://github.com/pmagistry/trankit.git
     ```
 
-- vous pouvez commencer à filtrer votre dossier
+
+## Usage
+
+### - Lire un flux RSS (un seul fichier)
+- Affiche les articles (id, source, title, description, date, categories)
     ```
-    python rss_reader.py chemin_vers_votre_dossier -d [date_début] -f [date_fin] -s [source] -c [catégories] -cm [mode de match les catégories]
+    python rss_reader.py chemin_vers_votre_doc
     ```
-    ⚠️ Tous les filtres sont optionnels
-    - Filtrage par `date`
-        - `date_début` et `date_fin` doit etre sous format YYYY-MM-DD (année-mois-date)
-    - Filtrage par `source`
-        - les sources disponibles sont : `blast`, `elucid`, `bfm`, `libération`, `franceinfo`, `lefigaro`
-        - ⚠️attention aux caractères accentués, si une erreur apparaît
-        - par exemple : `rss_reader.py: error: argument -s/--source: invalid choice: 'libération' (choose from 'blast', 'elucid', 'bfm', 'libération', 'franceinfo', 'lefigaro')`
-        - copiez-collez exactement la valeur indiquée dans le message d’erreur afin d’éviter tout problème d’encodage.
-    - Filtrage par `catégories`
-        - vous pouvez indiquer une ou plusieurs catégories avec -c
-        - le mode de correspondance se règle avec l’option -cm
-            - `all` -> toutes les catégories doivent correspondre
-            - `any` -> au moins une catégorie doit correspondre
-    - Exemple complet
-        ```
-        python rss_reader.py chemin_vers_votre_dossier -d 2025-02-01 -s blast -c culture cinéma -cm all
-        ```
-- Résultat
-Après l’exécution, un message récapitulatif s’affiche :
-    - nombre des articles traités
-    - nombre des articles trouvés
-    - ex: `3658 articles ont été traités, 2 ont été trouvés`
-      
-Votre articles trouvés sera sauvegarder dans un fichier texte `résultat.txt`
+
+### - Construire un corpus_sérialisé (et filtrer)
+- Depuis des fichiers RSS :
+    ```
+    python rss_parcours.py chemin_vers_votre_doc -o corpus.[json, xml, pkl]
+    ```
+- Avec filtres :
+    ```
+    python rss_parcours.py chemin_vers_votre_doc -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_sérialisé.[json, xml, pkl]
+    
+    exemple : python rss_parcours.py chemin_vers_votre_doc -d 2025-02-01 -s blast -c culture -o corpus_sérialisé.[json, xml, pkl]
+    ```
+- Depuis un corpus_sérialisé déjà existant (vous pouvez aussi filtrer et convertir le format) :
+    ```
+    python rss_parcours.py corpus_sérialisé.[json, xml, pkl] -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_filtre.[json, xml, pkl]
+    ```
+
+### - Ajouter les tokens (analyse)
+```
+python analyzers.py corpus_sérialisé.[json, xml, pkl] -a [spacy, stanza, trankit] -o corpus_analysé.[json, xml, pkl]
+```
+
+### - Topic Modeling (LDA) et Afficher le résultat sous format HTML
+```
+python run_lda.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
+```
+⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
 
 
 
