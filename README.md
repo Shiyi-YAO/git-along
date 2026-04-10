@@ -1,10 +1,11 @@
 # RSS Topic Modeling Project
-Pipeline complet pour : RSS → corpus → tokens → LDA → topics
 
-    - lire des flux RSS
-    - filtrer des articles
+Pipeline complet pour ce projet : RSS → corpus → tokens → LDA → topics
+
+    - Lire des flux RSS (XML)
+    - Constri
     - ajouter des tokens (NLP)
-    - faire du topic modeling (LDA)
+    - faire du topic modeling
 
 ⚠️ vous trouverez dans chaque fichier .py des exemples de commandes dans `main` pour exécuter le fichier
 
