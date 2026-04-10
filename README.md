@@ -34,18 +34,27 @@ Pipeline complet pour :
     ```
 
 
-## Usage
+## Usage (接下来可以体验不同功能, 推荐您一步一步跟随下面的步骤来体验我们所有的功能)
 
-### - Lire un flux RSS (un seul fichier)
-- Affiche les articles (id, source, title, description, date, categories)
+### 1. Lire un flux RSS
+C'est une fonction qui vous affiche les infos clé des articles (id, source, title, description, date, categories)
+- Pour lire un seul fichier flus rss
     ```
-    python rss_reader.py chemin_vers_votre_doc
+    python rss_reader.py Corpus
+    ```
+- Pour lire un dossier où il y a plusieurs fichiers flus rss
+    ```
+    python rss_parcours.py Corpus
     ```
 
-### - Construire un corpus_sérialisé (et filtrer)
-- Depuis des fichiers RSS :
+### 2. Construire un corpus_sérialisé (et filtrer)
+- Depuis des fichiers RSS et les sauvegarder sous différents format (`xml`, `json`, `pkl`)
     ```
-    python rss_parcours.py chemin_vers_votre_doc -o corpus.[json, xml, pkl]
+    python rss_parcours.py Corpus -o corpus.[xml, json, pkl]
+    ```
+    Exemple :
+    ```
+    python rss_parcours.py Corpus -o corpus.pkl
     ```
 - Avec filtres :
     ```
@@ -58,16 +67,21 @@ Pipeline complet pour :
     python rss_parcours.py corpus_sérialisé.[json, xml, pkl] -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_filtre.[json, xml, pkl]
     ```
 
-### - Ajouter les tokens (analyse)
+### 3. Ajouter les tokens (analyse)
 ```
 python analyzers.py corpus_sérialisé.[json, xml, pkl] -a [spacy, stanza, trankit] -o corpus_analysé.[json, xml, pkl]
 ```
 
-### - Topic Modeling (LDA) et Afficher le résultat sous format HTML
+### 4. Topic Modeling et Afficher le résultat sous format HTML (有两种Model可以选择, 您可以两种都体验一下然后选择您的偏好)
+#### - LDA 
+    ```
+    python run_lda.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
+    ```
+    ⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
+#### - BerTopic
 ```
 python run_lda.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
 ```
-⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
 
 
 
