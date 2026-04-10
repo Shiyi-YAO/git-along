@@ -1,12 +1,12 @@
 # Rapport — Projet RSS Topic Modeling
 
 ## Présentation de l'équipe
-### Membres
+### - Membres
 - CHANFOOK Benoit
 - LEE Yeji
 - YAO Shiyi
 
-### Cadre académique
+### - Cadre académique
 PluriTAL (Inalco/Sorbonne Nouvelle/Nanterre) - 2526
 Projet de Programmation Encadré 2
 
