@@ -59,29 +59,47 @@ C'est une fonction qui vous affiche les infos clé des articles (id, source, tit
 - Avec filtres :
     ```
     python rss_parcours.py chemin_vers_votre_doc -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_sérialisé.[json, xml, pkl]
-    
-    exemple : python rss_parcours.py chemin_vers_votre_doc -d 2025-02-01 -s blast -c culture -o corpus_sérialisé.[json, xml, pkl]
+    ```
+    Exemple :
+    ```
+    python rss_parcours.py chemin_vers_votre_doc -d 2025-02-01 -s blast -c culture -o corpus_sérialisé.pkl
     ```
 - Depuis un corpus_sérialisé déjà existant (vous pouvez aussi filtrer et convertir le format) :
     ```
     python rss_parcours.py corpus_sérialisé.[json, xml, pkl] -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_filtre.[json, xml, pkl]
     ```
+    Exemple :
+    ```
+    python rss_parcours.py corpus_sérialisé.pkl -d 2025-02-01 -s blast -c culture -o corpus_sérialisé.json
+    ```
 
 ### 3. Ajouter les tokens (analyse)
-```
-python analyzers.py corpus_sérialisé.[json, xml, pkl] -a [spacy, stanza, trankit] -o corpus_analysé.[json, xml, pkl]
-```
+    ```
+    python analyzers.py corpus_sérialisé.[json, xml, pkl] -a [spacy, stanza, trankit] -o corpus_analysé.[json, xml, pkl]
+    ```
+    Exemple :
+    ```
+    python analyzers.py corpus_sérialisé.pkl -a spacy -o corpus_analysé.pkl
+    ```
 
 ### 4. Topic Modeling et Afficher le résultat sous format HTML (有两种Model可以选择, 您可以两种都体验一下然后选择您的偏好)
 #### - LDA 
     ```
     python run_lda.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
     ```
+    Exemple :
+    ```
+    python run_lda.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_lda.html
+    ```
     ⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
 #### - BerTopic
-```
-python run_lda.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
-```
+    ```
+    python run_bertopic.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
+    ```
+    Exemple :
+    ```
+    python run_bertopic.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_bertopic.html
+    ```
 
 
 
