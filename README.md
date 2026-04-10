@@ -118,33 +118,43 @@ Une fois la lecture vérifiée, on peut construire un corpus réutilisable dans 
 Vous pouvez utiliser soit LDA, soit BERTopic.
 
 #### - LDA 
-    ```
-    python run_lda.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_lda.html
-    ```
-    Un fichier `résultat_lda.html` est créé dans `projet`. Il permet de visualiser les topics extraits du corpus.
+```
+python run_lda.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_lda.html
+```
+Un fichier `résultat_lda.html` est créé dans `projet`. Il permet de visualiser les topics extraits du corpus.
     
-    ⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
+⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
     
 #### - BerTopic
-    ```
-    python run_bertopic.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_bertopic.html
-    ```
-    Un fichier `résultat_bertopic.html` est créé dans `projet`. Il contient les visualisations produites par BERTopic.
+```
+python run_bertopic.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_bertopic.html
+```
+Un fichier `résultat_bertopic.html` est créé dans `projet`. Il contient les visualisations produites par BERTopic.
     
-    Dans les deux cas, il suffit ensuite d’ouvrir le fichier HTML dans un navigateur.
+Dans les deux cas, il suffit ensuite d’ouvrir le fichier HTML dans un navigateur.
     
 ### 6. La visualisation des deux models
+Les fichiers HTML générés permettent d’explorer les thèmes détectés dans le corpus.  
+L’objectif n’est pas d’obtenir une vérité absolue, mais d’identifier les grandes tendances du corpus et les mots qui caractérisent chaque thème.
 
 #### - LDA
 <p align="center">
     <img src="images/lda.png" width="700">
 </p>
 
+- le cercle de gauche représente les différents topics ;
+- plus un cercle est grand, plus le topic est important dans le corpus ;
+- plus deux cercles sont éloignés, plus les topics sont différents ;
+- à droite, on voit les mots les plus représentatifs du topic sélectionné.
+
 #### - BerTopic
 <p align="center">
     <img src="images/bertopic.png" width="700">
 </p>
 
-
+- chaque cercle représente un topic ;
+- plus un cercle est grand, plus ce topic est présent dans le corpus ;
+- plus deux cercles sont éloignés, plus les topics sont différents.
+- En dessous, les graphiques en barres montrent les mots les plus représentatifs de chaque topic.
 
 
