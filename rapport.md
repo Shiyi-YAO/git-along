@@ -10,7 +10,7 @@
 PluriTAL (Inalco/Sorbonne Nouvelle/Nanterre) - 2526
 Projet de Programmation Encadré 2
 
-## Introduction
+## I. Introduction
 
 ### 1. Objectif du rapport
 Ce rapport a pour objectif d’évaluer le dépôt fourni comme livrable final du projet de Programmation Encadré 2.
