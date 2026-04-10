@@ -2,9 +2,9 @@
 
 ## Présentation de l'équipe
 ### - Membres
-- 1, 2, 3 : `LEE Yeji`
-- 4, 5 : `CHANFOOK Benoit`
-- 6, 7 : `YAO Shiyi`
+- `CHANFOOK Benoit` : l’analyse morphosyntaxique et topic modeling LDA
+- `LEE Yeji` : La lecture du flux RSS et la (dé)sérialisation
+- `YAO Shiyi` : topic modeling BerTopic et la visualisation
 
 ### - Cadre académique
 PluriTAL (`Inalco`, `Nanterre`, `Sorbonne Nouvelle`) - 2526
