@@ -71,72 +71,78 @@ Les étapes suivantes doivent être exécutées dans le terminal, à l’intéri
             ```
 
 
-## III. (不知道取什么名字)
+## III. Utilisation du projet pas à pas
 
 ### 1. Lire les flux RSS
-Pour vérifier si les articles s'affichent correctement
+- Vérifier que les fichiers RSS sont correctement lus et que les articles sont bien extraits
     ```
     python rss_parcours.py Corpus
     ```
-您将会在终端看到`Numéro d'article`, `id`, `source`, `title`, `description`, `date`, `categories`, `analysis`
+Les articles s’affichent dans le terminal avec leurs principales informations : `id`, `source`, `title`, `description`, `date`, `categories` et `analysis`. À ce stade, l’attribut `analysis` est encore vide, car l’analyse linguistique n’a pas encore été appliquée.
 
+Une fois la lecture vérifiée, on peut construire un corpus réutilisable dans un format sérialisé.
 
-
-### 2. Construire un corpus_sérialisé (et filtrer)
-- Depuis des fichiers RSS et les sauvegarder sous différents format (`xml`, `json`, `pkl`)
-    ```
-    python rss_parcours.py Corpus -o corpus.[xml, json, pkl]
-    ```
-    Exemple :
+### 2. Construire un corpus sérialisé
+- Enregistrer les articles extraits dans un format réutilisable (`xml`, `json`, `pkl`)
     ```
     python rss_parcours.py Corpus -o corpus.pkl
     ```
-- Avec filtres :
-    ```
-    python rss_parcours.py chemin_vers_votre_doc -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_sérialisé.[json, xml, pkl]
-    ```
-    Exemple :
-    ```
-    python rss_parcours.py chemin_vers_votre_doc -d 2025-02-01 -s blast -c culture -o corpus_sérialisé.pkl
-    ```
-- Depuis un corpus_sérialisé déjà existant (vous pouvez aussi filtrer et convertir le format) :
-    ```
-    python rss_parcours.py corpus_sérialisé.[json, xml, pkl] -d [date_début] -f [date_fin] -s [liste source] -c [liste catégories] -o corpus_filtre.[json, xml, pkl]
-    ```
-    Exemple :
-    ```
-    python rss_parcours.py corpus_sérialisé.pkl -d 2025-02-01 -s blast -c culture -o corpus_sérialisé.json
-    ```
+    Un fichier `corpus.pkl` est créé dans `projet`. Il contient l’ensemble des objets Article extraits depuis les flux RSS. Vous pouvez l'enregistrer dans le format souhaité en modifiant l'extension du fichier.
+    
+    Ce corpus peut ensuite être filtré ou enrichi par une analyse linguistique.
 
-### 3. Ajouter les tokens (analyse)
-    ```
-    python analyzers.py corpus_sérialisé.[json, xml, pkl] -a [spacy, stanza, trankit] -o corpus_analysé.[json, xml, pkl]
-    ```
-    Exemple :
-    ```
-    python analyzers.py corpus_sérialisé.pkl -a spacy -o corpus_analysé.pkl
-    ```
 
-### 4. Topic Modeling et Afficher le résultat sous format HTML (有两种Model可以选择, 您可以两种都体验一下然后选择您的偏好)
+### 3. Filtrer le corpus
+- Ne conserver que les articles correspondant à certains critères, par exemple une période, une source ou une catégorie.
+    ```
+    python rss_parcours.py Corpus -d 2025-02-01 -s blast -c culture -o corpus_filtré.pkl
+    ```
+    Ou utilisez le corpus que vous venez de sérialiser.
+    ```
+    python rss_parcours.py corpus.pkl -d 2025-02-01 -s blast -c culture -o corpus_filtré.pkl
+    ```
+    Un fichier `corpus_filtré.pkl` est créé dans `projet`. Il contient uniquement les articles correspondant aux filtres indiqués.
+    
+    Ce corpus filtré servira d’entrée pour l’analyse linguistique.
+
+### 4. Ajouter l’analyse linguistique
+- Ajouter aux articles un attribut analysis contenant les annotations linguistiques de chaque token.
+    ```
+    python analyzers.py corpus_filtré.pkl -a spacy -o corpus_analysé.pkl
+    ```
+    Un fichier `corpus_analysé.pkl` est créé dans `projet`. Chaque objet Article contient désormais un attribut `analysis`, composé de phrases et de tokens annotés (form, lemma, pos).
+    
+    Ce corpus analysé peut maintenant être utilisé pour la modélisation thématique.
+
+### 5. Lancer le topic modeling
+Vous pouvez utiliser soit LDA, soit BERTopic.
+
 #### - LDA 
-    ```
-    python run_lda.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
-    ```
-    Exemple :
     ```
     python run_lda.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_lda.html
     ```
+    Un fichier `résultat_lda.html` est créé dans `projet`. Il permet de visualiser les topics extraits du corpus.
+    
     ⚠️ Ici, n’uploadez pas des fichiers trop petits, sinon il sera impossible de résumer les topics.
+    
 #### - BerTopic
-    ```
-    python run_bertopic.py corpus_sérialisé_analysé.pkl -form [lemma, mot] -pos [ADJ, NOUN, VERB...] -o résultat.html
-    ```
-    Exemple :
     ```
     python run_bertopic.py corpus_sérialisé_analysé.pkl -form mot -pos NOUN -o résultat_bertopic.html
     ```
+    Un fichier `résultat_bertopic.html` est créé dans `projet`. Il contient les visualisations produites par BERTopic.
+    
+    Dans les deux cas, il suffit ensuite d’ouvrir le fichier HTML dans un navigateur.
+    
+### 6. La visualisation des deux models
 
-
+#### - LDA
+<p align="center">
+  <img src="images/lda.png" width="700">
+</p>
+#### - BerTopic
+<p align="center">
+  <img src="images/bertopic.png" width="700">
+</p>
 
 
 
