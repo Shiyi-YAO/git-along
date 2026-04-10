@@ -27,33 +27,51 @@ Pipeline complet pour ce projet : RSS XML → construction / filtrage du corpus 
 
 ⚠️ vous trouverez dans la fonction `main` de chaque fichier `.py` des exemples de commandes pour exécuter le script
 
-## II. Préparation vos données et 环境设置
-1. Ouvrir votre terminal(⚠️activer l'environnement virtuel)
-2. Cloner notre repertoitoire et se déplacer dans le projet
+## II. Préparations
+
+### Préparations de l'environnement
+
+1. Ouvrir votre terminal
+
+2. Activer l'environnement virtuel (Si vous n’en avez pas encore, veuillez demander à l'IA de créer et d'activer un environnement virtuel basé sur votre appareil.)
+
+### Mise en place du projet 
+Les étapes suivantes doivent être exécutées dans le terminal, à l’intérieur de l’environnement virtuel activé. Il vous suffit de copier-coller les commandes ci-dessous et d’appuyer sur Entrée.
+
+3. Cloner notre repertoitoire et se déplacer dans le projet
     ```
     git clone https://gitlab.com/plurital-ppe2-2026/groupe11/projet.git
     ```
     ```
     cd projet
     ```
-3. Préparer votre ficheir ou dossier de flux RSS et le nommer `Corpus` pour vous puissse utiliser directement les commandes suivants
-4. Installer les outils : (⚠️ Vous n’avez besoin d’installer que l’outil d’analyse que vous allez utiliser. Nous recommandons SpaCy)
-    - SpaCy : 
-    ```
-    pip install spacy
-    python -m spacy download fr_core_news_sm
-    ```
-    - Stanza :
-    ```
-    pip install stanza
-    ```
-    - Trankit : (il faut python 3.10)
-    ```
-    uv pip install https://github.com/pmagistry/trankit.git
-    ```
+4. Préparer votre fichier RSS ou votre dossier de flux RSS et renommez-le `Corpus`, afin de pouvoir utiliser directement les commandes données dans la suite.
+
+5. Installer les outils nécessaires. : (⚠️ Vous n’avez pas besoin d’installer tous les outils : installez seulement le lecteur RSS et l’outil d’analyse linguistique que vous souhaitez utiliser. Nous recommandons `feedparser` pour la lecture RSS et `SpaCy` pour l’analyse linguistique.)
+    - RSS Reader
+        - `xml` : Aucun paquet supplémentaire n’est nécessaire : ce mode repose sur les bibliothèques standard de Python.
+        - `etree` : Aucun paquet supplémentaire n’est nécessaire : ce mode utilise xml.etree.ElementTree, inclus dans la bibliothèque standard de Python.
+        - `feedparser` : Ceci est recommandé car `xml` et `etree` ont des limitations dans la lecture de certains fichiers xml.
+            ```
+            pip install feedparser
+            ```
+    - Analyseur 
+        - `SpaCy` : 
+            ```
+            pip install spacy
+            python -m spacy download fr_core_news_sm
+            ```
+        - `Stanza` :
+            ```
+            pip install stanza
+            ```
+        - `Trankit` : (il faut `python 3.10`)
+            ```
+            uv pip install https://github.com/pmagistry/trankit.git
+            ```
 
 
-## III. Commencez (开始体验 !)
+## III. (不知道取什么名字)
 
 ### 1. Lire les flux RSS
 Pour vérifier si les articles s'affichent correctement
