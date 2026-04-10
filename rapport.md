@@ -8,6 +8,7 @@
 
 ### - Cadre académique
 PluriTAL (Inalco/Sorbonne Nouvelle/Nanterre) - 2526
+
 Projet de Programmation Encadré 2
 
 ## I. Introduction
