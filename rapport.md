@@ -13,16 +13,25 @@ Projet de Programmation Encadré 2
 
 ## I. Introduction
 
+### 1. Objectif du rapport
 Ce rapport a pour objectif d’évaluer le dépôt fourni comme livrable final du projet de Programmation Encadré 2.
 
 Il s’adresse à un destinataire de type « N+1 » : il ne s’agit pas ici d’expliquer en détail comment utiliser l’outil, mais d’examiner dans quelle mesure le livrable répond aux attentes pédagogiques formulées au cours du semestre.
 
-Le rapport s’appuie sur les objectifs rappelés dans les consignes du rendu final. Pour chacun d’entre eux, nous analysons :
+### 2. Méthode d’évaluation
+Le rapport s’appuie sur les objectifs rappelés dans les consignes du rendu final. Pour chaque objectif, nous examinons :
 - ce qui était attendu ;
 - ce qui est effectivement présent dans le dépôt ;
-- ce qui fonctionne ou non ;
-- l’écart entre l’attendu et l’obtenu ;
-- le travail restant pour rendre la fonctionnalité pleinement opérationnelle.
+- les principales limites ou écarts observés.
+
+Enfin, nous résumons le niveau de réalisation de la fonctionnalité et le travail qu’il reste à fournir.
+
+### 3. Présentation synthétique du dépôt
+- `rss_reader.py` : lire un fichier_flux_rss.xml
+- `rss_parcours.py` : lire un fichier ou un dossier RSS, regrouper les articles, les filtrer et exporter le corpus
+- `analyzers.py` : ajouter l’analyse linguistique aux articles avec SpaCy, Stanza ou Trankit
+- `datastructures.py` : définir les classes `Article` et `Token`, et gèrer la lecture/écriture des formats XML, JSON et Pickle
+- `run_lda.py` & `run_bertopic.py` : implémenter la modélisation thématique
 
 ## II. Évaluation
 
@@ -46,3 +55,5 @@ Le rapport s’appuie sur les objectifs rappelés dans les consignes du rendu fi
 
 ### 7. Visualisations
 
+
+## III. Conclusion
