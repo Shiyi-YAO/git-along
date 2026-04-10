@@ -1,6 +1,10 @@
 # RSS Topic Modeling Project
 
-Pipeline complet pour ce projet : RSS → corpus → tokens → LDA → topics
+C'est un projet qui vous aidera à suivre les thématiques et les expressions qui ont fait l’actualité, au fil du temps dans les publications de différents journaux en ligne.
+
+<img src="images/pipeline.png" width="300">
+
+Pipeline complet pour ce projet : RSS → corpus → analyse → topic modeling → visualisation
 
     - Lire des flux RSS (XML)
     - Constri
