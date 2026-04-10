@@ -2,9 +2,9 @@
 
 ## Présentation de l'équipe
 ### - Membres
-- CHANFOOK Benoit
-- LEE Yeji
-- YAO Shiyi
+- `CHANFOOK Benoit`
+- `LEE Yeji`
+- `YAO Shiyi`
 
 ### - Cadre académique
 PluriTAL (`Inalco`, `Nanterre`, `Sorbonne Nouvelle`) - 2526
